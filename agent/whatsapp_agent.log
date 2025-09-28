@@ -1,0 +1,1200 @@
+2025-09-24 13:10:14,488 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 13:10:14,488 - __main__ - INFO - Initializing dependencies...
+2025-09-24 13:10:14,488 - startup - INFO - Initializing dependencies...
+2025-09-24 13:10:14,506 - startup - INFO - MongoDB connected successfully
+2025-09-24 13:10:15,701 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 13:10:16,261 - startup - INFO - Embedding model initialized successfully
+2025-09-24 13:10:16,540 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 13:10:16,540 - __main__ - INFO - Fetching sites from database...
+2025-09-24 13:10:18,134 - utils - WARNING - No sites found for project_id: 68ca7acbdd378bc4962be220
+2025-09-24 13:10:18,134 - __main__ - WARNING - No sites found in database
+2025-09-24 13:10:18,135 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 13:10:18,153 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 13:10:18,156 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 13:10:18,157 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 13:10:18,407 - nodes - INFO - Starting context extraction
+2025-09-24 13:10:18,999 - utils - WARNING - No sites found for project_id: 68ca7acbdd378bc4962be220
+2025-09-24 13:10:24,397 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 13:10:24,415 - nodes - INFO - Extracted 1 actions
+2025-09-24 13:10:24,418 - workflow - INFO - No actionable items found
+2025-09-24 13:14:22,864 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 13:14:22,864 - __main__ - INFO - Initializing dependencies...
+2025-09-24 13:14:22,864 - startup - INFO - Initializing dependencies...
+2025-09-24 13:14:22,876 - startup - INFO - MongoDB connected successfully
+2025-09-24 13:14:23,996 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 13:14:24,528 - startup - INFO - Embedding model initialized successfully
+2025-09-24 13:14:24,796 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 13:14:24,796 - __main__ - INFO - Fetching sites from database...
+2025-09-24 13:14:26,301 - utils - WARNING - No sites found for project_id: 68ca7acbdd378bc4962be220
+2025-09-24 13:14:26,302 - __main__ - WARNING - No sites found in database
+2025-09-24 13:14:26,304 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 13:14:26,336 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 13:14:26,338 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 13:14:26,339 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 13:14:26,564 - nodes - INFO - Starting context extraction
+2025-09-24 13:14:27,138 - utils - WARNING - No sites found for project_id: 68ca7acbdd378bc4962be220
+2025-09-24 13:14:29,471 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 13:14:29,491 - nodes - INFO - Extracted 1 actions
+2025-09-24 13:14:29,493 - workflow - INFO - No actionable items found
+2025-09-24 13:16:54,763 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 13:16:54,764 - __main__ - INFO - Initializing dependencies...
+2025-09-24 13:16:54,764 - startup - INFO - Initializing dependencies...
+2025-09-24 13:16:54,776 - startup - INFO - MongoDB connected successfully
+2025-09-24 13:16:55,949 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 13:16:56,758 - startup - INFO - Embedding model initialized successfully
+2025-09-24 13:16:57,131 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 13:16:57,131 - __main__ - INFO - Fetching sites from database...
+2025-09-24 13:16:58,554 - utils - WARNING - No sites found for project_id: 68ca7acbdd378bc4962be220
+2025-09-24 13:16:58,555 - __main__ - WARNING - No sites found in database
+2025-09-24 13:16:58,556 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 13:16:58,587 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 13:16:58,592 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 13:16:58,593 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 13:16:58,810 - nodes - INFO - Starting context extraction
+2025-09-24 13:16:59,372 - utils - WARNING - No sites found for project_id: 68ca7acbdd378bc4962be220
+2025-09-24 13:17:02,727 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 13:17:02,755 - nodes - INFO - Extracted 1 actions
+2025-09-24 13:17:02,757 - workflow - INFO - No actionable items found
+2025-09-24 13:17:10,659 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 13:17:10,660 - __main__ - INFO - Initializing dependencies...
+2025-09-24 13:17:10,660 - startup - INFO - Initializing dependencies...
+2025-09-24 13:17:10,670 - startup - INFO - MongoDB connected successfully
+2025-09-24 13:17:11,747 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 13:17:12,281 - startup - INFO - Embedding model initialized successfully
+2025-09-24 13:17:12,564 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 13:17:12,565 - __main__ - INFO - Fetching sites from database...
+2025-09-24 13:17:14,036 - utils - WARNING - No sites found for project_id: 68ca7acbdd378bc4962be220
+2025-09-24 13:17:14,037 - __main__ - WARNING - No sites found in database
+2025-09-24 13:17:14,038 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 13:17:14,062 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 13:17:14,066 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 13:17:14,066 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 13:17:14,247 - nodes - INFO - Starting context extraction
+2025-09-24 13:17:14,827 - utils - WARNING - No sites found for project_id: 68ca7acbdd378bc4962be220
+2025-09-24 13:17:18,230 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 13:17:18,271 - nodes - INFO - Extracted 1 actions
+2025-09-24 13:17:18,272 - workflow - INFO - Routing to work package classification
+2025-09-24 13:17:18,278 - nodes - INFO - Starting work package classification
+2025-09-24 13:17:18,278 - nodes - INFO - Classified work packages for 1 sites
+2025-09-24 13:17:18,282 - nodes - INFO - Starting parameter extraction
+2025-09-24 13:17:18,285 - nodes - INFO - Executing action execution node
+2025-09-24 13:17:18,286 - nodes - INFO - Action parameters received: {}
+2025-09-24 13:17:18,286 - nodes - INFO - Available actions: []
+2025-09-24 13:17:18,286 - nodes - INFO - Database connection status: Connected
+2025-09-24 13:17:18,287 - nodes - ERROR - No action parameters provided or database not connected
+2025-09-24 13:17:18,287 - nodes - ERROR - Action execution node failed: Database objects do not implement truth value testing or bool(). Please compare with None instead: database is not None
+2025-09-24 14:18:19,820 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 14:18:19,820 - __main__ - INFO - Initializing dependencies...
+2025-09-24 14:18:19,820 - startup - INFO - Initializing dependencies...
+2025-09-24 14:18:19,824 - startup - INFO - MongoDB connected successfully
+2025-09-24 14:18:22,268 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 14:18:23,691 - startup - INFO - Embedding model initialized successfully
+2025-09-24 14:18:24,504 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 14:18:24,505 - __main__ - INFO - Fetching sites from database...
+2025-09-24 14:18:25,979 - utils - WARNING - No sites found for project_id: 68ca7acbdd378bc4962be220
+2025-09-24 14:18:25,980 - __main__ - WARNING - No sites found in database
+2025-09-24 14:18:25,981 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 14:18:26,016 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 14:18:26,022 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 14:18:26,024 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 14:18:26,438 - nodes - INFO - Starting context extraction
+2025-09-24 14:18:26,521 - nodes - ERROR - Context extraction failed: get_all_site_names_and_ids() missing 1 required positional argument: 'project_id'
+2025-09-24 14:18:26,524 - workflow - WARNING - Error in context extraction: Context extraction failed: get_all_site_names_and_ids() missing 1 required positional argument: 'project_id'
+2025-09-24 14:18:46,733 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 14:18:46,734 - __main__ - INFO - Initializing dependencies...
+2025-09-24 14:18:46,735 - startup - INFO - Initializing dependencies...
+2025-09-24 14:18:46,737 - startup - INFO - MongoDB connected successfully
+2025-09-24 14:18:48,724 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 14:18:49,368 - startup - INFO - Embedding model initialized successfully
+2025-09-24 14:18:49,669 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 14:18:49,669 - __main__ - INFO - Fetching sites from database...
+2025-09-24 14:18:51,130 - utils - WARNING - No sites found for project_id: 68ca7acbdd378bc4962be220
+2025-09-24 14:18:51,132 - __main__ - WARNING - No sites found in database
+2025-09-24 14:18:51,133 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 14:18:51,157 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 14:18:51,163 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 14:18:51,168 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 14:18:51,464 - nodes - INFO - Starting context extraction
+2025-09-24 14:18:51,471 - nodes - ERROR - Context extraction failed: get_all_site_names_and_ids() missing 1 required positional argument: 'project_id'
+2025-09-24 14:18:51,474 - workflow - WARNING - Error in context extraction: Context extraction failed: get_all_site_names_and_ids() missing 1 required positional argument: 'project_id'
+2025-09-24 14:19:33,186 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 14:19:33,186 - __main__ - INFO - Initializing dependencies...
+2025-09-24 14:19:33,187 - startup - INFO - Initializing dependencies...
+2025-09-24 14:19:33,191 - startup - INFO - MongoDB connected successfully
+2025-09-24 14:19:34,896 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 14:19:35,538 - startup - INFO - Embedding model initialized successfully
+2025-09-24 14:19:35,870 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 14:19:35,870 - __main__ - INFO - Fetching sites from database...
+2025-09-24 14:19:37,594 - utils - WARNING - No sites found for project_id: 68ca7acbdd378bc4962be220
+2025-09-24 14:19:37,595 - __main__ - WARNING - No sites found in database
+2025-09-24 14:19:37,596 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 14:19:37,624 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 14:19:37,630 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 14:19:37,632 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 14:19:38,056 - nodes - INFO - Starting context extraction
+2025-09-24 14:19:38,068 - utils - ERROR - No project_id provided to get_all_site_names_and_ids
+2025-09-24 14:19:41,449 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 14:19:41,471 - nodes - INFO - Extracted 1 actions
+2025-09-24 14:19:41,474 - workflow - INFO - Routing to work package classification
+2025-09-24 14:19:41,478 - nodes - INFO - Starting work package classification
+2025-09-24 14:19:41,489 - nodes - INFO - Starting parameter extraction
+2025-09-24 14:19:41,495 - nodes - INFO - Executing action execution node
+2025-09-24 14:19:41,501 - nodes - WARNING - No action parameters found in state
+2025-09-24 14:24:30,815 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 14:24:30,816 - __main__ - INFO - Initializing dependencies...
+2025-09-24 14:24:30,816 - startup - INFO - Initializing dependencies...
+2025-09-24 14:24:30,818 - startup - INFO - MongoDB connected successfully
+2025-09-24 14:24:32,082 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 14:24:32,767 - startup - INFO - Embedding model initialized successfully
+2025-09-24 14:24:33,115 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 14:24:33,117 - __main__ - INFO - Fetching sites from database...
+2025-09-24 14:24:34,603 - utils - WARNING - No sites found for project_id: 68ca7acbdd378bc4962be220
+2025-09-24 14:24:34,605 - __main__ - WARNING - No sites found in database
+2025-09-24 14:24:34,606 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 14:24:34,638 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 14:24:34,643 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 14:24:34,645 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 14:24:35,157 - nodes - INFO - Starting context extraction
+2025-09-24 14:24:35,164 - utils - ERROR - No project_id provided to get_all_site_names_and_ids
+2025-09-24 14:24:38,109 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 14:24:38,202 - nodes - INFO - Extracted 1 actions
+2025-09-24 14:24:38,207 - workflow - INFO - Routing to work package classification
+2025-09-24 14:24:38,214 - nodes - INFO - Starting work package classification
+2025-09-24 14:24:38,228 - nodes - INFO - Starting parameter extraction
+2025-09-24 14:24:38,235 - nodes - INFO - Executing action execution node
+2025-09-24 14:24:38,242 - nodes - WARNING - No action parameters found in state
+2025-09-24 14:26:57,955 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 14:26:57,956 - __main__ - INFO - Initializing dependencies...
+2025-09-24 14:26:57,956 - startup - INFO - Initializing dependencies...
+2025-09-24 14:26:57,959 - startup - INFO - MongoDB connected successfully
+2025-09-24 14:26:59,841 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 14:27:00,413 - startup - INFO - Embedding model initialized successfully
+2025-09-24 14:27:00,835 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 14:27:00,835 - __main__ - INFO - Fetching sites from database...
+2025-09-24 14:27:02,352 - utils - WARNING - No sites found for project_id: 68ca7acbdd378bc4962be220
+2025-09-24 14:27:02,352 - __main__ - WARNING - No sites found in database
+2025-09-24 14:27:02,353 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 14:27:02,362 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 14:27:02,365 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 14:27:02,365 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 14:27:02,656 - nodes - INFO - Starting context extraction
+2025-09-24 14:27:04,670 - utils - WARNING - No sites found for project_id: 68ca7acbdd378bc4962be220
+2025-09-24 14:27:07,669 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 14:27:07,721 - nodes - INFO - Extracted 1 actions
+2025-09-24 14:27:07,726 - workflow - INFO - Routing to work package classification
+2025-09-24 14:27:07,737 - nodes - INFO - Starting work package classification
+2025-09-24 14:27:07,759 - nodes - INFO - Starting parameter extraction
+2025-09-24 14:27:07,767 - nodes - INFO - Executing action execution node
+2025-09-24 14:27:07,780 - nodes - WARNING - No action parameters found in state
+2025-09-24 14:30:05,762 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 14:30:05,762 - __main__ - INFO - Initializing dependencies...
+2025-09-24 14:30:05,764 - startup - INFO - Initializing dependencies...
+2025-09-24 14:30:05,770 - startup - INFO - MongoDB connected successfully
+2025-09-24 14:30:07,471 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 14:30:08,121 - startup - INFO - Embedding model initialized successfully
+2025-09-24 14:30:08,409 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 14:30:08,409 - __main__ - INFO - Fetching sites from database...
+2025-09-24 14:30:10,157 - utils - WARNING - No sites found for project_id: 68ca7acbdd378bc4962be220
+2025-09-24 14:30:10,159 - __main__ - WARNING - No sites found in database
+2025-09-24 14:30:10,160 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 14:30:10,181 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 14:30:10,189 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 14:30:10,190 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 14:30:10,834 - nodes - INFO - Starting context extraction
+2025-09-24 14:30:13,497 - utils - WARNING - No sites found for project_id: 68ca7acbdd378bc4962be220
+2025-09-24 14:30:16,786 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 14:30:16,824 - nodes - INFO - Extracted 1 actions
+2025-09-24 14:30:16,828 - workflow - INFO - Routing to work package classification
+2025-09-24 14:30:16,834 - nodes - INFO - Starting work package classification
+2025-09-24 14:30:16,848 - nodes - INFO - Starting parameter extraction
+2025-09-24 14:30:16,856 - nodes - INFO - Executing action execution node
+2025-09-24 14:30:16,868 - nodes - WARNING - No action parameters found in state
+2025-09-24 14:33:14,031 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 14:33:14,031 - __main__ - INFO - Initializing dependencies...
+2025-09-24 14:33:14,031 - startup - INFO - Initializing dependencies...
+2025-09-24 14:33:14,034 - startup - INFO - MongoDB connected successfully
+2025-09-24 14:33:15,346 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 14:33:16,015 - startup - INFO - Embedding model initialized successfully
+2025-09-24 14:33:16,420 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 14:33:16,420 - __main__ - INFO - Fetching sites from database...
+2025-09-24 14:33:17,836 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 14:33:17,840 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 14:33:17,842 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 14:33:17,842 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 14:33:18,062 - nodes - INFO - Starting context extraction
+2025-09-24 14:33:23,132 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 14:33:23,151 - nodes - INFO - Extracted 1 actions
+2025-09-24 14:33:23,153 - workflow - INFO - Routing to work package classification
+2025-09-24 14:33:23,159 - nodes - INFO - Starting work package classification
+2025-09-24 14:33:23,172 - nodes - INFO - Starting parameter extraction
+2025-09-24 14:33:23,176 - nodes - INFO - Executing action execution node
+2025-09-24 14:33:23,181 - nodes - WARNING - No action parameters found in state
+2025-09-24 14:39:18,530 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 14:39:18,531 - __main__ - INFO - Initializing dependencies...
+2025-09-24 14:39:18,531 - startup - INFO - Initializing dependencies...
+2025-09-24 14:39:18,533 - startup - INFO - MongoDB connected successfully
+2025-09-24 14:39:19,569 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 14:39:20,122 - startup - INFO - Embedding model initialized successfully
+2025-09-24 14:39:20,404 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 14:39:20,405 - __main__ - INFO - Fetching sites from database...
+2025-09-24 14:39:21,829 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 14:39:21,834 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 14:39:21,835 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 14:39:21,836 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 14:39:22,008 - nodes - INFO - Starting context extraction
+2025-09-24 14:39:22,014 - nodes - INFO - Fetching sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 14:39:23,958 - nodes - INFO - Found 1214 sites for project
+2025-09-24 14:39:23,958 - nodes - INFO - Extracting context from messages...
+2025-09-24 14:39:23,958 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 14:39:23,961 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 14:39:26,873 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 14:39:26,885 - nodes - INFO - LLM response received. Content length: 369
+2025-09-24 14:39:26,890 - nodes - INFO - Extracted actions: ['update']
+2025-09-24 14:39:26,890 - nodes - INFO - Extracted 1 actions: ['update']
+2025-09-24 14:39:26,892 - workflow - INFO - Routing to work package classification
+2025-09-24 14:39:26,894 - nodes - INFO - Starting work package classification
+2025-09-24 14:39:26,899 - nodes - INFO - Starting parameter extraction
+2025-09-24 14:39:26,901 - nodes - INFO - Executing action execution node
+2025-09-24 14:39:26,904 - nodes - WARNING - No action parameters found in state
+2025-09-24 14:42:08,550 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 14:42:08,550 - __main__ - INFO - Initializing dependencies...
+2025-09-24 14:42:08,550 - startup - INFO - Initializing dependencies...
+2025-09-24 14:42:08,553 - startup - INFO - MongoDB connected successfully
+2025-09-24 14:42:09,739 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 14:42:10,291 - startup - INFO - Embedding model initialized successfully
+2025-09-24 14:42:10,572 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 14:42:10,572 - __main__ - INFO - Fetching sites from database...
+2025-09-24 14:42:11,956 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 14:42:11,968 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 14:42:11,971 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 14:42:11,971 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 14:42:12,304 - nodes - INFO - Starting context extraction
+2025-09-24 14:42:12,310 - nodes - INFO - Fetching sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 14:42:14,248 - nodes - INFO - Found 1214 sites for project
+2025-09-24 14:42:14,248 - nodes - INFO - Extracting context from messages...
+2025-09-24 14:42:14,249 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 14:42:14,252 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 14:42:17,372 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 14:42:17,384 - nodes - INFO - LLM response received. Content length: 328
+2025-09-24 14:42:17,385 - nodes - INFO - Extracted actions: ['update']
+2025-09-24 14:42:17,385 - nodes - INFO - Extracted 1 actions: ['update']
+2025-09-24 14:42:17,387 - workflow - INFO - Routing to work package classification
+2025-09-24 14:42:17,393 - nodes - INFO - Starting work package classification
+2025-09-24 14:42:17,400 - nodes - INFO - Starting parameter extraction
+2025-09-24 14:42:17,402 - nodes - INFO - Executing action execution node
+2025-09-24 14:42:17,406 - nodes - WARNING - No action parameters found in state
+2025-09-24 14:50:04,253 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 14:50:04,253 - __main__ - INFO - Initializing dependencies...
+2025-09-24 14:50:04,254 - startup - INFO - Initializing dependencies...
+2025-09-24 14:50:04,256 - startup - INFO - MongoDB connected successfully
+2025-09-24 14:50:05,209 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 14:50:05,771 - startup - INFO - Embedding model initialized successfully
+2025-09-24 14:50:06,076 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 14:50:06,076 - __main__ - INFO - Fetching sites from database...
+2025-09-24 14:50:07,485 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 14:50:07,490 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 14:50:07,490 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 14:50:07,492 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 14:50:07,670 - nodes - INFO - Starting context extraction
+2025-09-24 14:50:07,676 - nodes - INFO - Fetching sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 14:50:10,456 - nodes - INFO - Found 1214 sites for project
+2025-09-24 14:50:10,457 - nodes - INFO - Extracting context from messages...
+2025-09-24 14:50:10,457 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 14:50:10,459 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 14:50:13,693 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 14:50:13,702 - nodes - INFO - LLM response received. Content length: 340
+2025-09-24 14:50:13,705 - nodes - INFO - Extracted actions: ['update']
+2025-09-24 14:50:13,707 - nodes - INFO - Extracted 1 actions: ['update']
+2025-09-24 14:50:13,708 - workflow - INFO - Routing to work package classification
+2025-09-24 14:50:13,710 - nodes - INFO - Starting work package classification
+2025-09-24 14:50:13,718 - nodes - INFO - Starting parameter extraction
+2025-09-24 14:50:13,719 - nodes - INFO - Processing 1 actions: ['update']
+2025-09-24 14:50:13,719 - nodes - INFO - Processing action: update -> update
+2025-09-24 14:50:13,719 - nodes - WARNING - Unknown action: update
+2025-09-24 14:50:13,720 - nodes - INFO - Executing action execution node
+2025-09-24 14:50:13,725 - nodes - WARNING - No action parameters found in state
+2025-09-24 15:46:14,385 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 15:46:14,386 - __main__ - INFO - Initializing dependencies...
+2025-09-24 15:46:14,386 - startup - INFO - Initializing dependencies...
+2025-09-24 15:46:14,403 - startup - INFO - MongoDB connected successfully
+2025-09-24 15:46:15,453 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 15:46:16,003 - startup - INFO - Embedding model initialized successfully
+2025-09-24 15:46:16,269 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 15:46:16,270 - __main__ - INFO - Fetching sites from database...
+2025-09-24 15:46:17,736 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 15:46:17,756 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 15:46:17,760 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 15:46:17,760 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 15:46:17,962 - nodes - INFO - Starting context extraction
+2025-09-24 15:46:17,971 - nodes - INFO - Checking sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 15:46:19,944 - nodes - INFO - Found 13 total sites, using 10 examples for context
+2025-09-24 15:46:19,944 - nodes - INFO - Extracting context from messages...
+2025-09-24 15:46:19,944 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 15:46:19,957 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 15:46:23,444 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 15:46:23,461 - nodes - INFO - LLM response received. Content length: 374
+2025-09-24 15:46:23,464 - nodes - INFO - Extracted actions: ['update']
+2025-09-24 15:46:23,465 - nodes - INFO - Extracted 1 actions: ['update']
+2025-09-24 15:46:23,467 - workflow - INFO - Routing to work package classification
+2025-09-24 15:46:23,469 - nodes - INFO - Starting work package classification
+2025-09-24 15:46:23,475 - nodes - INFO - Starting parameter extraction
+2025-09-24 15:46:23,476 - nodes - INFO - Processing 1 actions: ['update']
+2025-09-24 15:46:23,476 - nodes - INFO - Processing action: update -> update
+2025-09-24 15:46:23,477 - nodes - INFO - Processing generic update action...
+2025-09-24 15:46:23,477 - nodes - INFO - Generic update processed
+2025-09-24 15:46:23,479 - nodes - INFO - Executing action execution node
+2025-09-24 15:46:23,481 - nodes - INFO - Action parameters received: {'update': updateResponse(title='General Update: whatsapp:+1234567890', message='Received update: site survey is done', type='update', status='acknowledged', related_entity_type=None, related_entity_id=None, action_taken='decision', action_description='Processed general update message from WhatsApp')}
+2025-09-24 15:46:23,482 - nodes - INFO - Available actions: ['update']
+2025-09-24 15:46:25,966 - nodes - INFO - Database connection verified
+2025-09-24 15:46:25,966 - nodes - INFO - No site_id provided, only allowing add_risk and update_task actions
+2025-09-24 15:46:25,967 - nodes - INFO - Executing generic update action...
+2025-09-24 15:46:28,228 - db_utils - INFO - Notification created for response: {'type': 'update', 'message': 'Received update: site survey is done', 'title': 'General Update: whatsapp:+1234567890', 'status': 'acknowledged', 'action_taken': 'decision', 'source': 'whatsapp', 'From': 'whatsapp:+1234567890', 'created_at': datetime.datetime(2025, 9, 24, 10, 16, 25, 969209), 'updated_at': datetime.datetime(2025, 9, 24, 10, 16, 25, 969209), 'acknowledged_at': datetime.datetime(2025, 9, 24, 10, 16, 25, 969209), 'project_id': '68d2479e8cb6cdbd6354e997', 'updated_by': ObjectId('68ac443d8f7fde8cc31cc0d9'), 'agent_update': True, '_id': ObjectId('68d3c4f9a8f17123cb75dbfd')}
+2025-09-24 15:53:56,279 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 15:53:56,280 - __main__ - INFO - Initializing dependencies...
+2025-09-24 15:53:56,280 - startup - INFO - Initializing dependencies...
+2025-09-24 15:53:56,291 - startup - INFO - MongoDB connected successfully
+2025-09-24 15:53:57,254 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 15:53:57,792 - startup - INFO - Embedding model initialized successfully
+2025-09-24 15:53:58,057 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 15:53:58,057 - __main__ - INFO - Fetching sites from database...
+2025-09-24 15:53:59,484 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 15:53:59,489 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 15:53:59,491 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 15:53:59,491 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 15:53:59,666 - nodes - INFO - Starting context extraction
+2025-09-24 15:53:59,671 - nodes - INFO - Checking sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 15:54:01,640 - nodes - INFO - Found 13 total sites, using 10 examples for context
+2025-09-24 15:54:01,640 - nodes - INFO - Extracting context from messages...
+2025-09-24 15:54:01,641 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 15:54:01,643 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 15:54:06,016 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 15:54:06,026 - nodes - INFO - LLM response received. Content length: 541
+2025-09-24 15:54:06,035 - nodes - INFO - Extracted actions: ['update_task']
+2025-09-24 15:54:06,035 - nodes - INFO - Extracted 1 actions: ['update_task']
+2025-09-24 15:54:06,036 - workflow - INFO - Routing to work package classification
+2025-09-24 15:54:06,038 - nodes - INFO - Starting work package classification
+2025-09-24 15:54:09,728 - nodes - ERROR - Error processing site 68d2489d0b0fb330d00bacb9: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\tanusha.k\Downloads\comm_agent\whatsapp_agent\agent\nodes.py", line 270, in work_package_classification_node
+    affected_cwps=[pkg.get('cwp_id') for pkg in site_packages if pkg.get('cwp_id')],
+  File "C:\Users\tanusha.k\Downloads\comm_agent\whatsapp_agent\agent\nodes.py", line 270, in <listcomp>
+    affected_cwps=[pkg.get('cwp_id') for pkg in site_packages if pkg.get('cwp_id')],
+AttributeError: 'str' object has no attribute 'get'
+2025-09-24 15:54:09,733 - nodes - INFO - Work package classification completed for 1 sites
+2025-09-24 15:54:09,733 - nodes - ERROR - Work package classification failed: `dumps_kwargs` keyword arguments are no longer supported.
+Traceback (most recent call last):
+  File "C:\Users\tanusha.k\Downloads\comm_agent\whatsapp_agent\agent\nodes.py", line 344, in work_package_classification_node
+    logger.debug(f"Work package analysis: {analysis_response.json(indent=2)}")
+  File "C:\Users\tanusha.k\.conda\envs\risk_env\lib\site-packages\pydantic\main.py", line 1317, in json
+    raise TypeError('`dumps_kwargs` keyword arguments are no longer supported.')
+TypeError: `dumps_kwargs` keyword arguments are no longer supported.
+2025-09-24 15:54:09,822 - nodes - INFO - Starting parameter extraction
+2025-09-24 15:54:09,822 - nodes - INFO - Processing 1 actions: ['update_task']
+2025-09-24 15:54:09,824 - nodes - INFO - Processing action: update_task -> update_task
+2025-09-24 15:54:09,824 - nodes - INFO - Extracting task parameters...
+2025-09-24 15:54:13,267 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 15:54:13,282 - nodes - INFO - Successfully parsed task parameters: 1 tasks
+2025-09-24 15:54:13,283 - nodes - INFO - Task parameters extracted: 1 tasks
+2025-09-24 15:54:13,284 - nodes - INFO - Executing action execution node
+2025-09-24 15:54:13,289 - nodes - INFO - Action parameters received: {'update_task': UpdateTaskInput(tasks=[Task(task_id='33_KV_PAPAL_SUB-STATION_Pimpri_Nipani', status='completed', notes='Solar Power Generating System site with 3 MW AC capacity is done', completion_percentage=100)], summary='The Solar Power Generating System site at papaL SUB-STATION with 3 MW AC capacity is completed.', title='Task Update for papaL SUB-STATION Solar Power System', reasoning="The message states that the papaL SUB-STATION Solar Power Generating System site with 3 MW AC capacity is done. The closest matching site from the available list is '33 KV PAPAL SUB-STATION - Pimpri Nipani'. This indicates task completion, so the task status should be updated accordingly.")}
+2025-09-24 15:54:13,291 - nodes - INFO - Available actions: ['update_task']
+2025-09-24 15:54:14,954 - nodes - INFO - Database connection verified
+2025-09-24 15:54:14,956 - db_utils - INFO - Executing action: update_task for 1 tasks. Summary: The Solar Power Generating System site at papaL SUB-STATION with 3 MW AC capacity is completed.
+2025-09-24 15:54:14,956 - db_utils - INFO - Updating task 1/1 with task_id: 33_KV_PAPAL_SUB-STATION_Pimpri_Nipani
+2025-09-24 15:54:14,956 - db_utils - INFO - Attempting to update task with ID: 33_KV_PAPAL_SUB-STATION_Pimpri_Nipani
+2025-09-24 15:54:14,958 - db_utils - INFO - Using collection: alfred_iwp
+2025-09-24 15:54:14,958 - db_utils - ERROR - Failed to update task 33_KV_PAPAL_SUB-STATION_Pimpri_Nipani: '33_KV_PAPAL_SUB-STATION_Pimpri_Nipani' is not a valid ObjectId, it must be a 12-byte input or a 24-character hex string
+2025-09-24 15:54:14,959 - db_utils - INFO - Batch task update completed: 0/1 tasks updated successfully.
+2025-09-24 15:54:14,959 - db_utils - WARNING - Failed to update 1 tasks.
+2025-09-24 15:54:14,959 - nodes - ERROR - Action execution failed for update_task: 'str' object has no attribute 'get'
+2025-09-24 16:02:11,173 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 16:02:11,174 - __main__ - INFO - Initializing dependencies...
+2025-09-24 16:02:11,174 - startup - INFO - Initializing dependencies...
+2025-09-24 16:02:11,184 - startup - INFO - MongoDB connected successfully
+2025-09-24 16:02:12,112 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 16:02:12,633 - startup - INFO - Embedding model initialized successfully
+2025-09-24 16:02:12,899 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 16:02:12,899 - __main__ - INFO - Fetching sites from database...
+2025-09-24 16:02:14,368 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 16:02:14,387 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 16:02:14,390 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 16:02:14,391 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 16:02:14,593 - nodes - INFO - Starting context extraction
+2025-09-24 16:02:14,598 - nodes - INFO - Checking sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 16:02:16,588 - nodes - INFO - Found 13 total sites, using 10 examples for context
+2025-09-24 16:02:16,589 - nodes - INFO - Extracting context from messages...
+2025-09-24 16:02:16,589 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 16:02:16,597 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 16:02:20,814 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 16:02:20,831 - nodes - INFO - LLM response received. Content length: 537
+2025-09-24 16:02:20,831 - nodes - INFO - Extracted actions: ['update_task']
+2025-09-24 16:02:20,832 - nodes - INFO - Extracted 1 actions: ['update_task']
+2025-09-24 16:02:20,833 - workflow - INFO - Routing to work package classification
+2025-09-24 16:02:20,837 - nodes - INFO - Starting work package classification
+2025-09-24 16:02:23,448 - nodes - ERROR - Error processing site 68d2489d0b0fb330d00bacb9: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+  File "C:\Users\tanusha.k\Downloads\comm_agent\whatsapp_agent\agent\nodes.py", line 270, in work_package_classification_node
+    affected_cwps=[pkg.get('cwp_id') for pkg in site_packages if pkg.get('cwp_id')],
+  File "C:\Users\tanusha.k\Downloads\comm_agent\whatsapp_agent\agent\nodes.py", line 270, in <listcomp>
+    affected_cwps=[pkg.get('cwp_id') for pkg in site_packages if pkg.get('cwp_id')],
+AttributeError: 'str' object has no attribute 'get'
+2025-09-24 16:02:23,449 - nodes - INFO - Work package classification completed for 1 sites
+2025-09-24 16:02:23,449 - nodes - ERROR - Work package classification failed: `dumps_kwargs` keyword arguments are no longer supported.
+Traceback (most recent call last):
+  File "C:\Users\tanusha.k\Downloads\comm_agent\whatsapp_agent\agent\nodes.py", line 344, in work_package_classification_node
+    logger.debug(f"Work package analysis: {analysis_response.json(indent=2)}")
+  File "C:\Users\tanusha.k\.conda\envs\risk_env\lib\site-packages\pydantic\main.py", line 1317, in json
+    raise TypeError('`dumps_kwargs` keyword arguments are no longer supported.')
+TypeError: `dumps_kwargs` keyword arguments are no longer supported.
+2025-09-24 16:02:23,452 - nodes - INFO - Starting parameter extraction
+2025-09-24 16:02:23,452 - nodes - INFO - Processing 1 actions: ['update_task']
+2025-09-24 16:02:23,453 - nodes - INFO - Processing action: update_task -> update_task
+2025-09-24 16:02:23,453 - nodes - INFO - Extracting task parameters...
+2025-09-24 16:02:27,315 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 16:02:27,327 - nodes - INFO - Successfully parsed task parameters: 1 tasks
+2025-09-24 16:02:27,328 - nodes - INFO - Task parameters extracted: 1 tasks
+2025-09-24 16:02:27,330 - nodes - INFO - Executing action execution node
+2025-09-24 16:02:27,334 - nodes - INFO - Action parameters received: {'update_task': UpdateTaskInput(tasks=[Task(task_id='33KV_PAPAL_SUBSTATION_SOLAR_3MW', status='completed', notes='Solar Power Generating System site with 3 MW AC capacity is done at PAPAL SUB-STATION.', completion_percentage=100)], summary='The 3 MW AC capacity Solar Power Generating System site at PAPAL SUB-STATION is completed.', title='Task Update for PAPAL SUB-STATION Solar Power System', reasoning="The message states that the 'papaL SUB-STATION Solar Power Generating System site with 3 MW AC capacity is done'. The site name matches '33 KV PAPAL SUB-STATION - Pimpri Nipani'. This indicates the task related to this site is completed, so the task status is updated to 'completed'. No specific task_id was provided in available tasks, so a placeholder task_id is used.")}
+2025-09-24 16:02:27,335 - nodes - INFO - Available actions: ['update_task']
+2025-09-24 16:02:29,043 - nodes - INFO - Database connection verified
+2025-09-24 16:02:29,043 - db_utils - INFO - Executing action: update_task for 1 tasks. Summary: The 3 MW AC capacity Solar Power Generating System site at PAPAL SUB-STATION is completed.
+2025-09-24 16:02:29,043 - db_utils - INFO - Updating task 1/1 with task_id: 33KV_PAPAL_SUBSTATION_SOLAR_3MW
+2025-09-24 16:02:29,044 - db_utils - INFO - Attempting to update task with ID: 33KV_PAPAL_SUBSTATION_SOLAR_3MW
+2025-09-24 16:02:29,044 - db_utils - INFO - Using collection: alfred_iwp
+2025-09-24 16:02:29,045 - db_utils - ERROR - Failed to update task 33KV_PAPAL_SUBSTATION_SOLAR_3MW: '33KV_PAPAL_SUBSTATION_SOLAR_3MW' is not a valid ObjectId, it must be a 12-byte input or a 24-character hex string
+2025-09-24 16:02:29,045 - db_utils - INFO - Batch task update completed: 0/1 tasks updated successfully.
+2025-09-24 16:02:29,045 - db_utils - WARNING - Failed to update 1 tasks.
+2025-09-24 16:02:29,045 - nodes - ERROR - Action execution failed for update_task: 'str' object has no attribute 'get'
+2025-09-24 16:07:59,537 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 16:07:59,537 - __main__ - INFO - Initializing dependencies...
+2025-09-24 16:07:59,537 - startup - INFO - Initializing dependencies...
+2025-09-24 16:07:59,548 - startup - INFO - MongoDB connected successfully
+2025-09-24 16:08:00,509 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 16:08:01,162 - startup - INFO - Embedding model initialized successfully
+2025-09-24 16:08:01,476 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 16:08:01,476 - __main__ - INFO - Fetching sites from database...
+2025-09-24 16:08:02,931 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 16:08:02,936 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 16:08:02,937 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 16:08:02,937 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 16:08:03,093 - nodes - INFO - Starting context extraction
+2025-09-24 16:08:03,099 - nodes - INFO - Checking sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 16:08:05,104 - nodes - INFO - Found 13 total sites, using 10 examples for context
+2025-09-24 16:08:05,104 - nodes - INFO - Extracting context from messages...
+2025-09-24 16:08:05,104 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 16:08:05,106 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 16:08:09,074 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 16:08:09,099 - nodes - INFO - LLM response received. Content length: 539
+2025-09-24 16:08:09,100 - nodes - INFO - Extracted actions: ['update_task']
+2025-09-24 16:08:09,100 - nodes - INFO - Extracted 1 actions: ['update_task']
+2025-09-24 16:08:09,102 - workflow - INFO - Routing to work package classification
+2025-09-24 16:08:09,104 - nodes - INFO - Starting work package classification
+2025-09-24 16:08:11,656 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 16:08:11,657 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 16:08:11,657 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 16:08:11,657 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 16:08:11,659 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 16:08:11,659 - nodes - INFO - Classified work packages for site 33 KV PAPAL SUB-STATION - Pimpri Nipani (ID: 68d2489d0b0fb330d00bacb9): 103 tasks, 5 packages, 0 risks
+2025-09-24 16:08:11,659 - nodes - INFO - Work package classification completed for 1 sites
+2025-09-24 16:08:11,662 - nodes - INFO - Starting parameter extraction
+2025-09-24 16:08:11,662 - nodes - INFO - Processing 1 actions: ['update_task']
+2025-09-24 16:08:11,662 - nodes - INFO - Processing action: update_task -> update_task
+2025-09-24 16:08:11,662 - nodes - INFO - Extracting task parameters...
+2025-09-24 16:08:15,472 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 16:08:15,482 - nodes - INFO - Successfully parsed task parameters: 0 tasks
+2025-09-24 16:08:15,483 - nodes - INFO - Task parameters extracted: 0 tasks
+2025-09-24 16:08:15,486 - nodes - INFO - Executing action execution node
+2025-09-24 16:08:15,491 - nodes - INFO - Action parameters received: {'update_task': UpdateTaskInput(tasks=[], summary='Update on completion of solar power generating system at PAPAL SUB-STATION site.', title='Task Update from WhatsApp Message', reasoning="The message mentions completion of a solar power generating system at 'PAPAL SUB-STATION'. The site name matches '33 KV PAPAL SUB-STATION - Pimpri Nipani' from the available sites, indicating a valid site. The message indicates task progress (system done), so the action is 'update_task'. However, no task_id or completion percentage is provided in the message or available tasks.")}
+2025-09-24 16:08:15,491 - nodes - INFO - Available actions: ['update_task']
+2025-09-24 16:08:17,952 - nodes - INFO - Database connection verified
+2025-09-24 16:08:17,953 - db_utils - INFO - Executing action: update_task for 0 tasks. Summary: Update on completion of solar power generating system at PAPAL SUB-STATION site.
+2025-09-24 16:08:17,953 - db_utils - INFO - Batch task update completed: 0/0 tasks updated successfully.
+2025-09-24 16:45:04,110 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 16:45:04,110 - __main__ - INFO - Initializing dependencies...
+2025-09-24 16:45:04,112 - startup - INFO - Initializing dependencies...
+2025-09-24 16:45:04,238 - startup - INFO - MongoDB connected successfully
+2025-09-24 16:45:07,573 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 16:45:08,884 - startup - INFO - Embedding model initialized successfully
+2025-09-24 16:45:09,483 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 16:45:09,483 - __main__ - INFO - Fetching sites from database...
+2025-09-24 16:45:11,042 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 16:45:11,055 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 16:45:11,058 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 16:45:11,059 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 16:45:11,379 - nodes - INFO - Starting context extraction
+2025-09-24 16:45:11,525 - nodes - INFO - Checking sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 16:45:14,585 - nodes - INFO - Found 13 total sites, using 10 examples for context
+2025-09-24 16:45:14,587 - nodes - INFO - Extracting context from messages...
+2025-09-24 16:45:14,587 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 16:45:14,590 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 16:45:19,122 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 16:45:19,138 - nodes - INFO - LLM response received. Content length: 620
+2025-09-24 16:45:19,149 - nodes - INFO - Extracted actions: ['update_task']
+2025-09-24 16:45:19,150 - nodes - INFO - Extracted 1 actions: ['update_task']
+2025-09-24 16:45:19,151 - workflow - INFO - Routing to work package classification
+2025-09-24 16:45:19,155 - nodes - INFO - Starting work package classification
+2025-09-24 16:45:21,876 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 16:45:21,877 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 16:45:21,877 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 16:45:21,877 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 16:45:21,877 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 16:45:21,879 - nodes - INFO - Classified work packages for site 33 KV PAPAL SUB-STATION - Pimpri Nipani (ID: 68d2489d0b0fb330d00bacb9): 103 tasks, 5 packages, 0 risks
+2025-09-24 16:45:21,880 - nodes - INFO - Work package classification completed for 1 sites
+2025-09-24 16:45:21,884 - nodes - INFO - Starting parameter extraction
+2025-09-24 16:45:21,884 - nodes - INFO - Processing 1 actions: ['update_task']
+2025-09-24 16:45:21,884 - nodes - INFO - Processing action: update_task -> update_task
+2025-09-24 16:45:21,886 - nodes - INFO - Extracting task parameters...
+2025-09-24 16:45:25,210 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 16:45:25,243 - nodes - INFO - Successfully parsed task parameters: 1 tasks
+2025-09-24 16:45:25,243 - nodes - INFO - Task parameters extracted: 1 tasks
+2025-09-24 16:45:25,248 - nodes - INFO - Executing action execution node
+2025-09-24 16:45:25,256 - nodes - INFO - Action parameters received: {'update_task': UpdateTaskInput(tasks=[Task(task_id='33 KV PAPAL SUB-STATION - Pimpri Nipani', status='completed', notes='Solar Power Generating System with 3 MW AC capacity is done', completion_percentage=100)], summary='The solar power generating system at PAPAL SUB-STATION with 3 MW AC capacity is completed.', title='Task Update for PAPAL SUB-STATION Solar Power System Completion', reasoning="The message states that the 'papaL SUB-STATION Solar Power Generating System site with 3 MW AC capacity is done'. This indicates completion of the task related to the solar power system at the PAPAL SUB-STATION site. Although no explicit task_id is provided in the available tasks, the site name matches a known site, and the message clearly indicates task completion.")}
+2025-09-24 16:45:25,257 - nodes - INFO - Available actions: ['update_task']
+2025-09-24 16:45:27,933 - nodes - INFO - Database connection verified
+2025-09-24 16:45:27,933 - db_utils - INFO - Executing action: update_task for 1 tasks. Summary: The solar power generating system at PAPAL SUB-STATION with 3 MW AC capacity is completed.
+2025-09-24 16:45:27,933 - db_utils - INFO - Updating task 1/1 with task_id: 33 KV PAPAL SUB-STATION - Pimpri Nipani
+2025-09-24 16:45:27,934 - db_utils - INFO - Attempting to update task with ID: 33 KV PAPAL SUB-STATION - Pimpri Nipani
+2025-09-24 16:45:27,934 - db_utils - INFO - Using collection: alfred_iwp
+2025-09-24 16:45:27,934 - db_utils - ERROR - Failed to update task 33 KV PAPAL SUB-STATION - Pimpri Nipani: '33 KV PAPAL SUB-STATION - Pimpri Nipani' is not a valid ObjectId, it must be a 12-byte input or a 24-character hex string
+2025-09-24 16:45:27,934 - db_utils - INFO - Batch task update completed: 0/1 tasks updated successfully.
+2025-09-24 16:45:27,935 - db_utils - WARNING - Failed to update 1 tasks.
+2025-09-24 16:47:47,955 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 16:47:47,956 - __main__ - INFO - Initializing dependencies...
+2025-09-24 16:47:47,956 - startup - INFO - Initializing dependencies...
+2025-09-24 16:47:47,983 - startup - INFO - MongoDB connected successfully
+2025-09-24 16:47:49,222 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 16:47:49,767 - startup - INFO - Embedding model initialized successfully
+2025-09-24 16:47:50,037 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 16:47:50,037 - __main__ - INFO - Fetching sites from database...
+2025-09-24 16:47:51,606 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 16:47:51,619 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 16:47:51,622 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 16:47:51,622 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 16:47:51,891 - nodes - INFO - Starting context extraction
+2025-09-24 16:47:51,921 - nodes - INFO - Checking sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 16:47:54,020 - nodes - INFO - Found 13 total sites, using 10 examples for context
+2025-09-24 16:47:54,023 - nodes - INFO - Extracting context from messages...
+2025-09-24 16:47:54,023 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 16:47:54,028 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 16:47:57,785 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 16:47:57,798 - nodes - INFO - LLM response received. Content length: 572
+2025-09-24 16:47:57,808 - nodes - INFO - Extracted actions: ['update_task']
+2025-09-24 16:47:57,809 - nodes - INFO - Extracted 1 actions: ['update_task']
+2025-09-24 16:47:57,810 - workflow - INFO - Routing to work package classification
+2025-09-24 16:47:57,813 - nodes - INFO - Starting work package classification
+2025-09-24 16:48:00,309 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 16:48:00,311 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 16:48:00,312 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 16:48:00,312 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 16:48:00,313 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 16:48:00,316 - nodes - INFO - Classified work packages for site 33 KV PAPAL SUB-STATION (ID: 68d2489d0b0fb330d00bacb9): 103 tasks, 5 packages, 0 risks
+2025-09-24 16:48:00,319 - nodes - INFO - Work package classification completed for 1 sites
+2025-09-24 16:48:00,331 - nodes - INFO - Starting parameter extraction
+2025-09-24 16:48:00,333 - nodes - INFO - Processing 1 actions: ['update_task']
+2025-09-24 16:48:00,334 - nodes - INFO - Processing action: update_task -> update_task
+2025-09-24 16:48:00,335 - nodes - INFO - Extracting task parameters...
+2025-09-24 16:48:04,912 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 16:48:04,955 - nodes - INFO - Successfully parsed task parameters: 1 tasks
+2025-09-24 16:48:04,958 - nodes - INFO - Task parameters extracted: 1 tasks
+2025-09-24 16:48:04,963 - nodes - INFO - Executing action execution node
+2025-09-24 16:48:04,971 - nodes - INFO - Action parameters received: {'update_task': UpdateTaskInput(tasks=[Task(task_id='68d2489d0b0fb330d00bacb9', status='completed', notes='Solar Power Generating System site with 3 MW AC capacity is done', completion_percentage=100)], summary='The Solar Power Generating System site at 33 KV PAPAL SUB-STATION with 3 MW AC capacity is completed.', title='Task Update for 33 KV PAPAL SUB-STATION Solar Power System', reasoning="The message mentions 'papaL SUB-STATION Solar Power Generating System site with 3 MW AC capacity is done'. Matching 'papaL SUB-STATION' to the known site '33 KV PAPAL SUB-STATION - Pimpri Nipani (68d2489d0b0fb330d00bacb9)' confirms a valid site. The message indicates task progress completion, so the action is 'update_task'.")}
+2025-09-24 16:48:04,972 - nodes - INFO - Available actions: ['update_task']
+2025-09-24 16:48:06,656 - nodes - INFO - Database connection verified
+2025-09-24 16:48:06,657 - db_utils - INFO - Executing action: update_task for 1 tasks. Summary: The Solar Power Generating System site at 33 KV PAPAL SUB-STATION with 3 MW AC capacity is completed.
+2025-09-24 16:48:06,658 - db_utils - INFO - Updating task 1/1 with task_id: 68d2489d0b0fb330d00bacb9
+2025-09-24 16:48:06,658 - db_utils - INFO - Attempting to update task with ID: 68d2489d0b0fb330d00bacb9
+2025-09-24 16:48:06,659 - db_utils - INFO - Using collection: alfred_iwp
+2025-09-24 16:48:06,660 - db_utils - INFO - Attempting query: {'_id': ObjectId('68d2489d0b0fb330d00bacb9')}
+2025-09-24 16:48:06,938 - db_utils - WARNING - Task 68d2489d0b0fb330d00bacb9 not found with query {'_id': ObjectId('68d2489d0b0fb330d00bacb9')}
+2025-09-24 16:48:06,938 - db_utils - INFO - Attempting query: {'task_id': '68d2489d0b0fb330d00bacb9'}
+2025-09-24 16:48:07,233 - db_utils - WARNING - Task 68d2489d0b0fb330d00bacb9 not found with query {'task_id': '68d2489d0b0fb330d00bacb9'}
+2025-09-24 16:48:07,236 - db_utils - INFO - Attempting query: {'task_number': '68d2489d0b0fb330d00bacb9'}
+2025-09-24 16:48:07,543 - db_utils - WARNING - Task 68d2489d0b0fb330d00bacb9 not found with query {'task_number': '68d2489d0b0fb330d00bacb9'}
+2025-09-24 16:48:07,881 - db_utils - INFO - Sample documents in alfred_iwp: [{'_id': ObjectId('68d24444a326feeaec46f9aa')}, {'_id': ObjectId('68d24444a326feeaec46f9ac')}, {'_id': ObjectId('68d24444a326feeaec46f9ae')}, {'_id': ObjectId('68d24444a326feeaec46f9b0')}, {'_id': ObjectId('68d24444a326feeaec46f9b4')}]
+2025-09-24 16:48:10,346 - db_utils - INFO - Batch task update completed: 0/1 tasks updated successfully.
+2025-09-24 16:48:10,348 - db_utils - WARNING - Failed to update 1 tasks.
+2025-09-24 17:11:15,956 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 17:11:15,956 - __main__ - INFO - Initializing dependencies...
+2025-09-24 17:11:15,956 - startup - INFO - Initializing dependencies...
+2025-09-24 17:11:15,969 - startup - INFO - MongoDB connected successfully
+2025-09-24 17:11:17,118 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 17:11:17,649 - startup - INFO - Embedding model initialized successfully
+2025-09-24 17:11:17,921 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 17:11:17,921 - __main__ - INFO - Fetching sites from database...
+2025-09-24 17:11:19,440 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 17:11:19,463 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 17:11:19,467 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 17:11:19,467 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 17:11:19,831 - nodes - INFO - Starting context extraction
+2025-09-24 17:11:19,839 - nodes - INFO - Checking sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 17:11:22,089 - nodes - INFO - Found 13 total sites, using 10 examples for context
+2025-09-24 17:11:22,089 - nodes - INFO - Extracting context from messages...
+2025-09-24 17:11:22,091 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 17:11:22,099 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 17:11:26,275 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 17:11:26,295 - nodes - INFO - LLM response received. Content length: 556
+2025-09-24 17:11:26,306 - nodes - INFO - Extracted actions: ['update_task']
+2025-09-24 17:11:26,306 - nodes - INFO - Extracted 1 actions: ['update_task']
+2025-09-24 17:11:26,309 - workflow - INFO - Routing to work package classification
+2025-09-24 17:11:26,311 - nodes - INFO - Starting work package classification
+2025-09-24 17:11:29,031 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:11:29,032 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:11:29,034 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:11:29,035 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:11:29,036 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:11:29,036 - nodes - INFO - Classified work packages for site 33 KV PAPAL SUB-STATION (ID: 68d2489d0b0fb330d00bacb9): 103 tasks, 5 packages, 0 risks
+2025-09-24 17:11:29,038 - nodes - INFO - Work package classification completed for 1 sites
+2025-09-24 17:11:29,047 - nodes - INFO - Starting parameter extraction
+2025-09-24 17:11:29,048 - nodes - INFO - Processing 1 actions: ['update_task']
+2025-09-24 17:11:29,049 - nodes - INFO - Processing action: update_task -> update_task
+2025-09-24 17:11:29,050 - nodes - INFO - Extracting task parameters...
+2025-09-24 17:11:29,051 - nodes - INFO - DEBUG - Available tasks data type: <class 'dict'>
+2025-09-24 17:11:29,052 - nodes - INFO - DEBUG - Available tasks keys: []
+2025-09-24 17:11:29,053 - nodes - INFO - DEBUG - Message text: 'papaL SUB-STATION  Solar Power Generating System site with 3 MW AC capacity is done"'
+2025-09-24 17:11:29,062 - nodes - INFO - DEBUG - Prompt preview (first 1000 chars): 
+Based on the following WhatsApp conversation, extract task updates:
+
+WhatsApp Messages: [
+  {
+    "message_id": "sample_msg_123",
+    "from": "whatsapp:+1234567890",
+    "timestamp": "2025-09-24T12:00:00Z",
+    "text": "papaL SUB-STATION  Solar Power Generating System site with 3 MW AC capacity is done\"",
+    "type": "text"
+  }
+]
+Available Tasks: {}
+Reasoning: The message mentions 'papaL SUB-STATION Solar Power Generating System site with 3 MW AC capacity is done'. The closest matching site from the available list is '33 KV PAPAL SUB-STATION - Pimpri Nipani (68d2489d0b0fb330d00bacb9)'. The message indicates task progress completion, so the action is 'update_task'.
+From: whatsapp:+1234567890
+
+Extract the following for each task update:
+- task_id: ID of task to update
+- status: new status for the task
+- notes: any additional notes
+- completion_percentage: if mentioned
+
+The output should be formatted as a JSON instance that conforms to the JSON schema below.
+
+As an example, for the sche...
+2025-09-24 17:11:33,578 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 17:11:33,584 - nodes - INFO - DEBUG - LLM response: ```json
+{
+  "title": "Task Update for 33 KV PAPAL SUB-STATION",
+  "summary": "The Solar Power Generating System site at 33 KV PAPAL SUB-STATION with 3 MW AC capacity is completed.",
+  "reasoning": "The message states that the 'papaL SUB-STATION Solar Power Generating System site with 3 MW AC capacity is done'. The closest matching site from the available list is '33 KV PAPAL SUB-STATION - Pimpri Nipani (68d2489d0b0fb330d00bacb9)'. This indicates the task related to this site is completed, so the task status is updated accordingly.",
+  "tasks": [
+    {
+      "task_id": "68d2489d0b0fb330d00bacb9",
+      "status": "completed",
+      "notes": "Solar Power Generating System site with 3 MW AC capacity is done",
+      "completion_percentage": 100
+    }
+  ]
+}
+```
+2025-09-24 17:11:33,623 - nodes - INFO - Successfully parsed task parameters: 1 tasks
+2025-09-24 17:11:33,624 - nodes - INFO - DEBUG - Task 1: task_id='68d2489d0b0fb330d00bacb9', status='completed'
+2025-09-24 17:11:33,625 - nodes - INFO - Task parameters extracted: 1 tasks
+2025-09-24 17:11:33,628 - nodes - INFO - Executing action execution node
+2025-09-24 17:11:33,633 - nodes - INFO - Action parameters received: {'update_task': UpdateTaskInput(tasks=[Task(task_id='68d2489d0b0fb330d00bacb9', status='completed', notes='Solar Power Generating System site with 3 MW AC capacity is done', completion_percentage=100)], summary='The Solar Power Generating System site at 33 KV PAPAL SUB-STATION with 3 MW AC capacity is completed.', title='Task Update for 33 KV PAPAL SUB-STATION', reasoning="The message states that the 'papaL SUB-STATION Solar Power Generating System site with 3 MW AC capacity is done'. The closest matching site from the available list is '33 KV PAPAL SUB-STATION - Pimpri Nipani (68d2489d0b0fb330d00bacb9)'. This indicates the task related to this site is completed, so the task status is updated accordingly.")}
+2025-09-24 17:11:33,633 - nodes - INFO - Available actions: ['update_task']
+2025-09-24 17:11:35,581 - nodes - INFO - Database connection verified
+2025-09-24 17:11:35,583 - db_utils - INFO - Executing action: update_task for 1 tasks. Summary: The Solar Power Generating System site at 33 KV PAPAL SUB-STATION with 3 MW AC capacity is completed.
+2025-09-24 17:11:35,584 - db_utils - INFO - Updating task 1/1 with task_id: 68d2489d0b0fb330d00bacb9
+2025-09-24 17:11:35,586 - db_utils - INFO - Attempting to update task with ID: 68d2489d0b0fb330d00bacb9
+2025-09-24 17:11:35,587 - db_utils - INFO - Using collection: alfred_iwp
+2025-09-24 17:11:35,587 - db_utils - INFO - Attempting query: {'_id': ObjectId('68d2489d0b0fb330d00bacb9')}
+2025-09-24 17:11:35,919 - db_utils - WARNING - Task 68d2489d0b0fb330d00bacb9 not found with query {'_id': ObjectId('68d2489d0b0fb330d00bacb9')}
+2025-09-24 17:11:35,921 - db_utils - INFO - Attempting query: {'task_id': '68d2489d0b0fb330d00bacb9'}
+2025-09-24 17:11:36,346 - db_utils - WARNING - Task 68d2489d0b0fb330d00bacb9 not found with query {'task_id': '68d2489d0b0fb330d00bacb9'}
+2025-09-24 17:11:36,347 - db_utils - INFO - Attempting query: {'task_number': '68d2489d0b0fb330d00bacb9'}
+2025-09-24 17:11:36,980 - db_utils - WARNING - Task 68d2489d0b0fb330d00bacb9 not found with query {'task_number': '68d2489d0b0fb330d00bacb9'}
+2025-09-24 17:11:37,296 - db_utils - INFO - Sample documents in alfred_iwp: [{'_id': ObjectId('68d24444a326feeaec46f9aa')}, {'_id': ObjectId('68d24444a326feeaec46f9ac')}, {'_id': ObjectId('68d24444a326feeaec46f9ae')}, {'_id': ObjectId('68d24444a326feeaec46f9b0')}, {'_id': ObjectId('68d24444a326feeaec46f9b4')}]
+2025-09-24 17:11:40,128 - db_utils - INFO - Batch task update completed: 0/1 tasks updated successfully.
+2025-09-24 17:11:40,129 - db_utils - WARNING - Failed to update 1 tasks.
+2025-09-24 17:12:31,556 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 17:12:31,557 - __main__ - INFO - Initializing dependencies...
+2025-09-24 17:12:31,557 - startup - INFO - Initializing dependencies...
+2025-09-24 17:12:31,571 - startup - INFO - MongoDB connected successfully
+2025-09-24 17:12:32,724 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 17:12:33,292 - startup - INFO - Embedding model initialized successfully
+2025-09-24 17:12:33,578 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 17:12:33,579 - __main__ - INFO - Fetching sites from database...
+2025-09-24 17:12:34,998 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 17:12:35,001 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 17:12:35,004 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 17:12:35,004 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 17:12:35,224 - nodes - INFO - Starting context extraction
+2025-09-24 17:12:35,230 - nodes - INFO - Checking sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 17:12:37,221 - nodes - INFO - Found 13 total sites, using 10 examples for context
+2025-09-24 17:12:37,223 - nodes - INFO - Extracting context from messages...
+2025-09-24 17:12:37,224 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 17:12:37,232 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 17:12:40,862 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 17:12:40,880 - nodes - INFO - LLM response received. Content length: 556
+2025-09-24 17:12:40,894 - nodes - INFO - Extracted actions: ['update_task']
+2025-09-24 17:12:40,894 - nodes - INFO - Extracted 1 actions: ['update_task']
+2025-09-24 17:12:40,895 - workflow - INFO - Routing to work package classification
+2025-09-24 17:12:40,898 - nodes - INFO - Starting work package classification
+2025-09-24 17:12:43,142 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:12:43,143 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:12:43,145 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:12:43,145 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:12:43,147 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:12:43,148 - nodes - INFO - Classified work packages for site 33 KV PAPAL SUB-STATION (ID: 68d2489d0b0fb330d00bacb9): 23 tasks, 5 packages, 0 risks
+2025-09-24 17:12:43,150 - nodes - INFO - Work package classification completed for 1 sites
+2025-09-24 17:12:43,160 - nodes - INFO - Starting parameter extraction
+2025-09-24 17:12:43,160 - nodes - INFO - Processing 1 actions: ['update_task']
+2025-09-24 17:12:43,162 - nodes - INFO - Processing action: update_task -> update_task
+2025-09-24 17:12:43,163 - nodes - INFO - Extracting task parameters...
+2025-09-24 17:12:43,164 - nodes - INFO - DEBUG - Available tasks data type: <class 'dict'>
+2025-09-24 17:12:43,165 - nodes - INFO - DEBUG - Available tasks keys: []
+2025-09-24 17:12:43,165 - nodes - INFO - DEBUG - Message text: 'papaL SUB-STATION  Solar Power Generating System site with 3 MW AC capacity is done"'
+2025-09-24 17:12:43,174 - nodes - INFO - DEBUG - Prompt preview (first 1000 chars): 
+Based on the following WhatsApp conversation, extract task updates:
+
+WhatsApp Messages: [
+  {
+    "message_id": "sample_msg_123",
+    "from": "whatsapp:+1234567890",
+    "timestamp": "2025-09-24T12:00:00Z",
+    "text": "papaL SUB-STATION  Solar Power Generating System site with 3 MW AC capacity is done\"",
+    "type": "text"
+  }
+]
+Available Tasks: {}
+Reasoning: The message mentions 'papaL SUB-STATION Solar Power Generating System site with 3 MW AC capacity is done'. The closest matching site from the available list is '33 KV PAPAL SUB-STATION - Pimpri Nipani (68d2489d0b0fb330d00bacb9)'. The message indicates task progress completion, so the action is 'update_task'.
+From: whatsapp:+1234567890
+
+Extract the following for each task update:
+- task_id: ID of task to update
+- status: new status for the task
+- notes: any additional notes
+- completion_percentage: if mentioned
+
+The output should be formatted as a JSON instance that conforms to the JSON schema below.
+
+As an example, for the sche...
+2025-09-24 17:12:47,226 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 17:12:47,228 - nodes - INFO - DEBUG - LLM response: ```json
+{
+  "title": "Task Update for 33 KV PAPAL SUB-STATION",
+  "summary": "The Solar Power Generating System site at 33 KV PAPAL SUB-STATION with 3 MW AC capacity is completed.",
+  "reasoning": "The message states that the 'papaL SUB-STATION Solar Power Generating System site with 3 MW AC capacity is done'. The closest matching site from the known list is '33 KV PAPAL SUB-STATION - Pimpri Nipani (68d2489d0b0fb330d00bacb9)'. This indicates the task related to this site is completed, so the task status is updated accordingly.",
+  "tasks": [
+    {
+      "task_id": "68d2489d0b0fb330d00bacb9",
+      "status": "completed",
+      "notes": "Solar Power Generating System site with 3 MW AC capacity is done",
+      "completion_percentage": 100
+    }
+  ]
+}
+```
+2025-09-24 17:12:47,239 - nodes - INFO - Successfully parsed task parameters: 1 tasks
+2025-09-24 17:12:47,239 - nodes - INFO - DEBUG - Task 1: task_id='68d2489d0b0fb330d00bacb9', status='completed'
+2025-09-24 17:12:47,239 - nodes - INFO - Task parameters extracted: 1 tasks
+2025-09-24 17:12:47,241 - nodes - INFO - Executing action execution node
+2025-09-24 17:12:47,246 - nodes - INFO - Action parameters received: {'update_task': UpdateTaskInput(tasks=[Task(task_id='68d2489d0b0fb330d00bacb9', status='completed', notes='Solar Power Generating System site with 3 MW AC capacity is done', completion_percentage=100)], summary='The Solar Power Generating System site at 33 KV PAPAL SUB-STATION with 3 MW AC capacity is completed.', title='Task Update for 33 KV PAPAL SUB-STATION', reasoning="The message states that the 'papaL SUB-STATION Solar Power Generating System site with 3 MW AC capacity is done'. The closest matching site from the known list is '33 KV PAPAL SUB-STATION - Pimpri Nipani (68d2489d0b0fb330d00bacb9)'. This indicates the task related to this site is completed, so the task status is updated accordingly.")}
+2025-09-24 17:12:47,247 - nodes - INFO - Available actions: ['update_task']
+2025-09-24 17:12:48,925 - nodes - INFO - Database connection verified
+2025-09-24 17:12:48,926 - db_utils - INFO - Executing action: update_task for 1 tasks. Summary: The Solar Power Generating System site at 33 KV PAPAL SUB-STATION with 3 MW AC capacity is completed.
+2025-09-24 17:12:48,927 - db_utils - INFO - Updating task 1/1 with task_id: 68d2489d0b0fb330d00bacb9
+2025-09-24 17:12:48,928 - db_utils - INFO - Attempting to update task with ID: 68d2489d0b0fb330d00bacb9
+2025-09-24 17:12:48,930 - db_utils - INFO - Using collection: alfred_iwp
+2025-09-24 17:12:48,931 - db_utils - INFO - Attempting query: {'_id': ObjectId('68d2489d0b0fb330d00bacb9')}
+2025-09-24 17:12:49,201 - db_utils - WARNING - Task 68d2489d0b0fb330d00bacb9 not found with query {'_id': ObjectId('68d2489d0b0fb330d00bacb9')}
+2025-09-24 17:12:49,202 - db_utils - INFO - Attempting query: {'task_id': '68d2489d0b0fb330d00bacb9'}
+2025-09-24 17:12:49,473 - db_utils - WARNING - Task 68d2489d0b0fb330d00bacb9 not found with query {'task_id': '68d2489d0b0fb330d00bacb9'}
+2025-09-24 17:12:49,474 - db_utils - INFO - Attempting query: {'task_number': '68d2489d0b0fb330d00bacb9'}
+2025-09-24 17:12:49,745 - db_utils - WARNING - Task 68d2489d0b0fb330d00bacb9 not found with query {'task_number': '68d2489d0b0fb330d00bacb9'}
+2025-09-24 17:12:50,016 - db_utils - INFO - Sample documents in alfred_iwp: [{'_id': ObjectId('68d24444a326feeaec46f9aa')}, {'_id': ObjectId('68d24444a326feeaec46f9ac')}, {'_id': ObjectId('68d24444a326feeaec46f9ae')}, {'_id': ObjectId('68d24444a326feeaec46f9b0')}, {'_id': ObjectId('68d24444a326feeaec46f9b4')}]
+2025-09-24 17:12:52,276 - db_utils - INFO - Batch task update completed: 0/1 tasks updated successfully.
+2025-09-24 17:12:52,277 - db_utils - WARNING - Failed to update 1 tasks.
+2025-09-24 17:17:29,011 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 17:17:29,012 - __main__ - INFO - Initializing dependencies...
+2025-09-24 17:17:29,012 - startup - INFO - Initializing dependencies...
+2025-09-24 17:17:29,032 - startup - INFO - MongoDB connected successfully
+2025-09-24 17:17:30,228 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 17:17:30,756 - startup - INFO - Embedding model initialized successfully
+2025-09-24 17:17:31,019 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 17:17:31,019 - __main__ - INFO - Fetching sites from database...
+2025-09-24 17:17:32,613 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 17:17:32,636 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 17:17:32,639 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 17:17:32,640 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 17:17:33,054 - nodes - INFO - Starting context extraction
+2025-09-24 17:17:33,059 - nodes - INFO - Checking sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 17:17:35,314 - nodes - INFO - Found 13 total sites, using 10 examples for context
+2025-09-24 17:17:35,315 - nodes - INFO - Extracting context from messages...
+2025-09-24 17:17:35,317 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 17:17:35,323 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 17:17:42,353 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 17:17:42,387 - nodes - INFO - LLM response received. Content length: 537
+2025-09-24 17:17:42,389 - nodes - INFO - Extracted actions: ['update_task']
+2025-09-24 17:17:42,391 - nodes - INFO - Extracted 1 actions: ['update_task']
+2025-09-24 17:17:42,400 - workflow - INFO - Routing to work package classification
+2025-09-24 17:17:42,404 - nodes - INFO - Starting work package classification
+2025-09-24 17:17:44,893 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:17:44,894 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:17:44,895 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:17:44,895 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:17:44,897 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:17:44,897 - nodes - INFO - Classified work packages for site 33 KV PAPAL SUB-STATION - Pimpri Nipani (ID: 68d2489d0b0fb330d00bacb9): 23 tasks, 5 packages, 0 risks
+2025-09-24 17:17:44,898 - nodes - INFO - Work package classification completed for 1 sites
+2025-09-24 17:17:44,912 - nodes - INFO - Starting parameter extraction
+2025-09-24 17:17:44,913 - nodes - INFO - Processing 1 actions: ['update_task']
+2025-09-24 17:17:44,914 - nodes - INFO - Processing action: update_task -> update_task
+2025-09-24 17:17:44,915 - nodes - INFO - Extracting task parameters...
+2025-09-24 17:17:44,928 - nodes - ERROR - Error in extract_task_parameters: Database objects do not implement truth value testing or bool(). Please compare with None instead: database is not None
+Traceback (most recent call last):
+  File "C:\Users\tanusha.k\Downloads\comm_agent\whatsapp_agent\agent\nodes.py", line 859, in extract_task_parameters
+    if db:
+  File "C:\Users\tanusha.k\.conda\envs\risk_env\lib\site-packages\pymongo\synchronous\database.py", line 342, in __bool__
+    raise NotImplementedError(
+NotImplementedError: Database objects do not implement truth value testing or bool(). Please compare with None instead: database is not None
+2025-09-24 17:17:44,974 - nodes - INFO - Task parameters extracted: 0 tasks
+2025-09-24 17:17:44,978 - nodes - INFO - Executing action execution node
+2025-09-24 17:17:44,981 - nodes - INFO - Action parameters received: {'update_task': UpdateTaskInput(tasks=[], summary='Failed to extract task parameters: Database objects do not implement truth value testing or bool(). Please compare with None instead: database is not None', title='Error extracting task parameters', reasoning='Error: Database objects do not implement truth value testing or bool(). Please compare with None instead: database is not None')}
+2025-09-24 17:17:44,982 - nodes - INFO - Available actions: ['update_task']
+2025-09-24 17:17:46,772 - nodes - INFO - Database connection verified
+2025-09-24 17:17:46,772 - db_utils - INFO - Executing action: update_task for 0 tasks. Summary: Failed to extract task parameters: Database objects do not implement truth value testing or bool(). Please compare with None instead: database is not None
+2025-09-24 17:17:46,774 - db_utils - INFO - Batch task update completed: 0/0 tasks updated successfully.
+2025-09-24 17:19:02,777 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 17:19:02,777 - __main__ - INFO - Initializing dependencies...
+2025-09-24 17:19:02,778 - startup - INFO - Initializing dependencies...
+2025-09-24 17:19:02,788 - startup - INFO - MongoDB connected successfully
+2025-09-24 17:19:03,988 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 17:19:04,511 - startup - INFO - Embedding model initialized successfully
+2025-09-24 17:19:04,775 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 17:19:04,776 - __main__ - INFO - Fetching sites from database...
+2025-09-24 17:19:06,456 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 17:19:06,479 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 17:19:06,485 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 17:19:06,485 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 17:19:06,732 - nodes - INFO - Starting context extraction
+2025-09-24 17:19:06,737 - nodes - INFO - Checking sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 17:19:08,856 - nodes - INFO - Found 13 total sites, using 10 examples for context
+2025-09-24 17:19:08,858 - nodes - INFO - Extracting context from messages...
+2025-09-24 17:19:08,858 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 17:19:08,867 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 17:19:13,213 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 17:19:13,255 - nodes - INFO - LLM response received. Content length: 549
+2025-09-24 17:19:13,272 - nodes - INFO - Extracted actions: ['update_task']
+2025-09-24 17:19:13,272 - nodes - INFO - Extracted 1 actions: ['update_task']
+2025-09-24 17:19:13,275 - workflow - INFO - Routing to work package classification
+2025-09-24 17:19:13,278 - nodes - INFO - Starting work package classification
+2025-09-24 17:19:15,743 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:19:15,744 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:19:15,745 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:19:15,745 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:19:15,745 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:19:15,747 - nodes - INFO - Classified work packages for site 33 KV PAPAL SUB-STATION - Pimpri Nipani (ID: 68d2489d0b0fb330d00bacb9): 23 tasks, 5 packages, 0 risks
+2025-09-24 17:19:15,749 - nodes - INFO - Work package classification completed for 1 sites
+2025-09-24 17:19:15,758 - nodes - INFO - Starting parameter extraction
+2025-09-24 17:19:15,758 - nodes - INFO - Processing 1 actions: ['update_task']
+2025-09-24 17:19:15,760 - nodes - INFO - Processing action: update_task -> update_task
+2025-09-24 17:19:15,760 - nodes - INFO - Extracting task parameters...
+2025-09-24 17:19:17,681 - nodes - INFO - Found 20 actual tasks for site 68d2489d0b0fb330d00bacb9
+2025-09-24 17:19:17,682 - nodes - INFO - DEBUG - First task for site 68d2489d0b0fb330d00bacb9: {'task_id': '68d249810b0fb330d00bacf1', 'package_name': 'Site Mobilization & Initial Assessment', 'status': 'open', 'start_date': '2025-01-06 00:00:00', 'due_date': '2025-01-08 00:00:00', 'cwp_id': '68d249800b0fb330d00bacdb'}
+2025-09-24 17:19:17,683 - nodes - INFO - DEBUG - Available tasks structure: <class 'dict'>
+2025-09-24 17:19:17,684 - nodes - INFO - DEBUG - Site 68d2489d0b0fb330d00bacb9: 20 tasks
+2025-09-24 17:19:22,430 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 17:19:22,484 - nodes - INFO - DEBUG - LLM extracted task_id: '68d249ff0b0fb330d00bad4f'
+2025-09-24 17:19:22,486 - nodes - INFO - DEBUG - Expected format like: 68d24444a326feeaec46f9aa
+2025-09-24 17:19:22,486 - nodes - INFO - Successfully parsed task parameters: 1 tasks
+2025-09-24 17:19:22,487 - nodes - INFO - Task parameters extracted: 1 tasks
+2025-09-24 17:19:22,490 - nodes - INFO - Executing action execution node
+2025-09-24 17:19:22,495 - nodes - INFO - Action parameters received: {'update_task': UpdateTaskInput(tasks=[Task(task_id='68d249ff0b0fb330d00bad4f', status='completed', notes='PAPAL SUB-STATION Solar Power Generating System site with 3 MW AC capacity is done', completion_percentage=100)], summary='The PAPAL SUB-STATION Solar Power Generating System site with 3 MW AC capacity is reported as done. The related task status is updated to completed.', title='Task Update for PAPAL SUB-STATION Solar Power Generating System Completion', reasoning="The message states that the PAPAL SUB-STATION Solar Power Generating System site with 3 MW AC capacity is done, indicating completion of the site preparation and layout task related to this site. The task 'Site Preparation and Layout' with status 'completed' and start date 2025-09-23 matches the timeline and description of the message. Therefore, the task status is confirmed as completed.")}
+2025-09-24 17:19:22,497 - nodes - INFO - Available actions: ['update_task']
+2025-09-24 17:19:24,226 - nodes - INFO - Database connection verified
+2025-09-24 17:19:24,227 - db_utils - INFO - Executing action: update_task for 1 tasks. Summary: The PAPAL SUB-STATION Solar Power Generating System site with 3 MW AC capacity is reported as done. The related task status is updated to completed.
+2025-09-24 17:19:24,228 - db_utils - INFO - Updating task 1/1 with task_id: 68d249ff0b0fb330d00bad4f
+2025-09-24 17:19:24,229 - db_utils - INFO - Attempting to update task with ID: 68d249ff0b0fb330d00bad4f
+2025-09-24 17:19:24,230 - db_utils - INFO - Using collection: alfred_iwp
+2025-09-24 17:19:24,230 - db_utils - INFO - Attempting query: {'_id': ObjectId('68d249ff0b0fb330d00bad4f')}
+2025-09-24 17:19:24,499 - db_utils - INFO - Found task with query {'_id': ObjectId('68d249ff0b0fb330d00bad4f')}: {'_id': ObjectId('68d249ff0b0fb330d00bad4f')}
+2025-09-24 17:19:27,330 - db_utils - INFO - Batch task update completed: 1/1 tasks updated successfully.
+2025-09-24 17:23:29,147 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 17:23:29,147 - __main__ - INFO - Initializing dependencies...
+2025-09-24 17:23:29,147 - startup - INFO - Initializing dependencies...
+2025-09-24 17:23:29,160 - startup - INFO - MongoDB connected successfully
+2025-09-24 17:23:30,220 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 17:23:30,813 - startup - INFO - Embedding model initialized successfully
+2025-09-24 17:23:31,111 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 17:23:31,112 - __main__ - INFO - Fetching sites from database...
+2025-09-24 17:23:32,764 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 17:23:32,779 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 17:23:32,782 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 17:23:32,782 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 17:23:33,145 - nodes - INFO - Starting context extraction
+2025-09-24 17:23:33,158 - nodes - INFO - Checking sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 17:23:35,401 - nodes - INFO - Found 13 total sites, using 10 examples for context
+2025-09-24 17:23:35,402 - nodes - INFO - Extracting context from messages...
+2025-09-24 17:23:35,404 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 17:23:35,413 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 17:23:39,349 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 17:23:39,401 - nodes - INFO - LLM response received. Content length: 519
+2025-09-24 17:23:39,403 - nodes - INFO - Extracted actions: ['add_risk']
+2025-09-24 17:23:39,404 - nodes - INFO - Extracted 1 actions: ['add_risk']
+2025-09-24 17:23:39,408 - workflow - INFO - Routing to work package classification
+2025-09-24 17:23:39,415 - nodes - INFO - Starting work package classification
+2025-09-24 17:23:42,629 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:23:42,630 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:23:42,630 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:23:42,632 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:23:42,634 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:23:42,635 - nodes - INFO - Classified work packages for site 33 KV PAPAL SUB-STATION - Pimpri Nipani (ID: 68d2489d0b0fb330d00bacb9): 23 tasks, 5 packages, 0 risks
+2025-09-24 17:23:42,637 - nodes - INFO - Work package classification completed for 1 sites
+2025-09-24 17:23:42,647 - nodes - INFO - Starting parameter extraction
+2025-09-24 17:23:42,648 - nodes - INFO - Processing 1 actions: ['add_risk']
+2025-09-24 17:23:42,650 - nodes - INFO - Processing action: add_risk -> add_risk
+2025-09-24 17:23:42,651 - nodes - INFO - Extracting risk parameters...
+2025-09-24 17:23:42,925 - nodes - INFO - Found 0 existing risks for site 68d2489d0b0fb330d00bacb9
+2025-09-24 17:23:47,029 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 17:23:47,078 - nodes - INFO - Successfully parsed risk parameters: 1 risks
+2025-09-24 17:23:47,079 - nodes - INFO - Risk parameters extracted: 1 risks
+2025-09-24 17:23:47,083 - nodes - INFO - Executing action execution node
+2025-09-24 17:23:47,089 - nodes - INFO - Action parameters received: {'add_risk': AddRiskInput(risks=[Risk(site_id='68d2489d0b0fb330d00bacb9', title='Rain Exposure Risk to Solar Power Generating System', description='Rainfall at 33 KV PAPAL SUB-STATION may cause water ingress or damage to the Solar Power Generating System, potentially leading to operational disruptions or equipment failure.', severity='medium', status='open', category='environmental')], title='Rain Impact on Solar Power System at PAPAL Sub-Station', summary='Rain detected at 33 KV PAPAL SUB-STATION affecting the Solar Power Generating System, posing potential operational risks.', reasoning="The WhatsApp message mentions 'papaL SUB-STATION Solar Power Generating System has rains', indicating rain at the site. The site name matches '33 KV PAPAL SUB-STATION - Pimpri Nipani', so a risk related to rain impact on the solar power system is identified and added.")}
+2025-09-24 17:23:47,089 - nodes - INFO - Available actions: ['add_risk']
+2025-09-24 17:23:48,999 - nodes - INFO - Database connection verified
+2025-09-24 17:23:49,001 - nodes - INFO - Preparing to add 1 risks
+2025-09-24 17:23:49,002 - nodes - INFO - Calling add_risk with 1 risks
+2025-09-24 17:23:49,003 - nodes - ERROR - Failed to add risks: add_risk() got an unexpected keyword argument 'reasoning'
+Traceback (most recent call last):
+  File "C:\Users\tanusha.k\Downloads\comm_agent\whatsapp_agent\agent\nodes.py", line 628, in action_execution_node
+    result = add_risk(
+TypeError: add_risk() got an unexpected keyword argument 'reasoning'
+2025-09-24 17:24:01,704 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 17:24:01,704 - __main__ - INFO - Initializing dependencies...
+2025-09-24 17:24:01,704 - startup - INFO - Initializing dependencies...
+2025-09-24 17:24:01,720 - startup - INFO - MongoDB connected successfully
+2025-09-24 17:24:02,858 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 17:24:03,415 - startup - INFO - Embedding model initialized successfully
+2025-09-24 17:24:03,696 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 17:24:03,697 - __main__ - INFO - Fetching sites from database...
+2025-09-24 17:24:05,151 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 17:24:05,162 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 17:24:05,190 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 17:24:05,190 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 17:24:05,350 - nodes - INFO - Starting context extraction
+2025-09-24 17:24:05,355 - nodes - INFO - Checking sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 17:24:07,535 - nodes - INFO - Found 13 total sites, using 10 examples for context
+2025-09-24 17:24:07,536 - nodes - INFO - Extracting context from messages...
+2025-09-24 17:24:07,537 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 17:24:07,543 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 17:24:11,321 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 17:24:11,345 - nodes - INFO - LLM response received. Content length: 507
+2025-09-24 17:24:11,348 - nodes - INFO - Extracted actions: ['add_risk']
+2025-09-24 17:24:11,348 - nodes - INFO - Extracted 1 actions: ['add_risk']
+2025-09-24 17:24:11,350 - workflow - INFO - Routing to work package classification
+2025-09-24 17:24:11,354 - nodes - INFO - Starting work package classification
+2025-09-24 17:24:13,933 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:24:13,934 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:24:13,934 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:24:13,935 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:24:13,936 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:24:13,936 - nodes - INFO - Classified work packages for site 33 KV PAPAL SUB-STATION - Pimpri Nipani (ID: 68d2489d0b0fb330d00bacb9): 23 tasks, 5 packages, 0 risks
+2025-09-24 17:24:13,937 - nodes - INFO - Work package classification completed for 1 sites
+2025-09-24 17:24:13,941 - nodes - INFO - Starting parameter extraction
+2025-09-24 17:24:13,941 - nodes - INFO - Processing 1 actions: ['add_risk']
+2025-09-24 17:24:13,943 - nodes - INFO - Processing action: add_risk -> add_risk
+2025-09-24 17:24:13,944 - nodes - INFO - Extracting risk parameters...
+2025-09-24 17:24:14,279 - nodes - INFO - Found 0 existing risks for site 68d2489d0b0fb330d00bacb9
+2025-09-24 17:24:18,573 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 17:24:18,617 - nodes - INFO - Successfully parsed risk parameters: 1 risks
+2025-09-24 17:24:18,617 - nodes - INFO - Risk parameters extracted: 1 risks
+2025-09-24 17:24:18,622 - nodes - INFO - Executing action execution node
+2025-09-24 17:24:18,627 - nodes - INFO - Action parameters received: {'add_risk': AddRiskInput(risks=[Risk(site_id='68d2489d0b0fb330d00bacb9', title='Rain Exposure Risk to Solar Power System', description='Rainwater at the 33 KV PAPAL SUB-STATION may cause electrical hazards, damage to solar panels or related equipment, and disrupt power generation operations.', severity='medium', status='open', category='environmental')], title='Rain Impact on Solar Power System at PAPAL Sub-Station', summary='Rain detected at 33 KV PAPAL SUB-STATION affecting the Solar Power Generating System, posing potential operational and safety risks.', reasoning="The WhatsApp message mentions 'papaL SUB-STATION Solar Power Generating System has rains', indicating that rainwater is present at the site. This can cause electrical hazards, equipment damage, or operational disruptions at the solar power system. The site name matches '33 KV PAPAL SUB-STATION - Pimpri Nipani', so a risk related to weather impact on solar power infrastructure is identified.")}
+2025-09-24 17:24:18,629 - nodes - INFO - Available actions: ['add_risk']
+2025-09-24 17:24:20,512 - nodes - INFO - Database connection verified
+2025-09-24 17:24:20,512 - nodes - INFO - Preparing to add 1 risks
+2025-09-24 17:24:20,513 - nodes - INFO - Calling add_risk with 1 risks
+2025-09-24 17:24:20,513 - nodes - ERROR - Failed to add risks: add_risk() got an unexpected keyword argument 'reasoning'
+Traceback (most recent call last):
+  File "C:\Users\tanusha.k\Downloads\comm_agent\whatsapp_agent\agent\nodes.py", line 628, in action_execution_node
+    result = add_risk(
+TypeError: add_risk() got an unexpected keyword argument 'reasoning'
+2025-09-24 17:26:38,500 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 17:26:38,501 - __main__ - INFO - Initializing dependencies...
+2025-09-24 17:26:38,501 - startup - INFO - Initializing dependencies...
+2025-09-24 17:26:38,513 - startup - INFO - MongoDB connected successfully
+2025-09-24 17:26:39,539 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 17:26:40,122 - startup - INFO - Embedding model initialized successfully
+2025-09-24 17:26:40,397 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 17:26:40,397 - __main__ - INFO - Fetching sites from database...
+2025-09-24 17:26:41,930 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 17:26:41,939 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 17:26:41,943 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 17:26:41,943 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 17:26:42,313 - nodes - INFO - Starting context extraction
+2025-09-24 17:26:42,322 - nodes - INFO - Checking sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 17:26:44,433 - nodes - INFO - Found 13 total sites, using 10 examples for context
+2025-09-24 17:26:44,434 - nodes - INFO - Extracting context from messages...
+2025-09-24 17:26:44,435 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 17:26:44,440 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 17:26:48,585 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 17:26:48,597 - nodes - INFO - LLM response received. Content length: 488
+2025-09-24 17:26:48,597 - nodes - INFO - Extracted actions: ['add_risk']
+2025-09-24 17:26:48,599 - nodes - INFO - Extracted 1 actions: ['add_risk']
+2025-09-24 17:26:48,600 - workflow - INFO - Routing to work package classification
+2025-09-24 17:26:48,604 - nodes - INFO - Starting work package classification
+2025-09-24 17:26:51,042 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:26:51,043 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:26:51,043 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:26:51,043 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:26:51,043 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:26:51,045 - nodes - INFO - Classified work packages for site 33 KV PAPAL SUB-STATION - Pimpri Nipani (ID: 68d2489d0b0fb330d00bacb9): 23 tasks, 5 packages, 0 risks
+2025-09-24 17:26:51,045 - nodes - INFO - Work package classification completed for 1 sites
+2025-09-24 17:26:51,048 - nodes - INFO - Starting parameter extraction
+2025-09-24 17:26:51,048 - nodes - INFO - Processing 1 actions: ['add_risk']
+2025-09-24 17:26:51,048 - nodes - INFO - Processing action: add_risk -> add_risk
+2025-09-24 17:26:51,048 - nodes - INFO - Extracting risk parameters...
+2025-09-24 17:26:51,352 - nodes - INFO - Found 0 existing risks for site 68d2489d0b0fb330d00bacb9
+2025-09-24 17:26:56,499 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 17:26:56,537 - nodes - INFO - Successfully parsed risk parameters: 1 risks
+2025-09-24 17:26:56,537 - nodes - INFO - Risk parameters extracted: 1 risks
+2025-09-24 17:26:56,541 - nodes - INFO - Executing action execution node
+2025-09-24 17:26:56,545 - nodes - INFO - Action parameters received: {'add_risk': AddRiskInput(risks=[Risk(site_id='68d2489d0b0fb330d00bacb9', title='Rain Impact on Solar Power Generating System', description='Rainfall at the 33 KV PAPAL SUB-STATION may cause operational disruptions or damage to the Solar Power Generating System, increasing the risk of electrical faults or safety hazards.', severity='medium', status='open', category='environmental')], title='Rain Impact on Solar Power System at PAPAL Sub-Station', summary='Rain detected at 33 KV PAPAL SUB-STATION affecting the Solar Power Generating System, posing potential operational and safety risks.', reasoning="The message mentions 'papaL SUB-STATION' and 'Solar Power Generating System has rains'. The closest matching site is '33 KV PAPAL SUB-STATION - Pimpri Nipani'. The mention of 'rains' indicates a weather-related risk that could impact the solar power system's performance or safety, so a risk entry is added.")}
+2025-09-24 17:26:56,547 - nodes - INFO - Available actions: ['add_risk']
+2025-09-24 17:26:58,413 - nodes - INFO - Database connection verified
+2025-09-24 17:26:58,413 - nodes - INFO - Preparing to add 1 risks
+2025-09-24 17:26:58,413 - nodes - INFO - Calling add_risk with 1 risks
+2025-09-24 17:26:58,415 - db_utils - INFO - Executing action: add_risk for 1 risks. Summary: Rain detected at 33 KV PAPAL SUB-STATION affecting the Solar Power Generating System, posing potential operational and safety risks.
+2025-09-24 17:26:58,416 - db_utils - INFO - Adding risk 1/1 for site_id: 68d2489d0b0fb330d00bacb9
+2025-09-24 17:27:00,813 - db_utils - INFO - Risk inserted: _id=68d3dc8adb5dc8564e951c91 into collection sample_risks
+2025-09-24 17:27:00,813 - db_utils - INFO - Batch risk addition completed: 1/1 risks added successfully.
+2025-09-24 17:58:02,640 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 17:58:02,641 - __main__ - INFO - Initializing dependencies...
+2025-09-24 17:58:02,641 - startup - INFO - Initializing dependencies...
+2025-09-24 17:58:02,659 - startup - INFO - MongoDB connected successfully
+2025-09-24 17:58:04,058 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 17:58:04,651 - startup - INFO - Embedding model initialized successfully
+2025-09-24 17:58:04,924 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 17:58:04,925 - __main__ - INFO - Fetching sites from database...
+2025-09-24 17:58:06,657 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 17:58:06,683 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 17:58:06,723 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 17:58:06,723 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 17:58:07,131 - nodes - INFO - Starting context extraction
+2025-09-24 17:58:07,143 - nodes - INFO - Checking sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 17:58:09,269 - nodes - INFO - Found 13 total sites, using 10 examples for context
+2025-09-24 17:58:09,269 - nodes - INFO - Extracting context from messages...
+2025-09-24 17:58:09,271 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 17:58:09,316 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 17:58:13,675 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 17:58:13,723 - nodes - INFO - LLM response received. Content length: 504
+2025-09-24 17:58:13,739 - nodes - INFO - Extracted actions: ['add_risk']
+2025-09-24 17:58:13,740 - nodes - INFO - Extracted 1 actions: ['add_risk']
+2025-09-24 17:58:13,745 - workflow - INFO - Routing to work package classification
+2025-09-24 17:58:13,751 - nodes - INFO - Starting work package classification
+2025-09-24 17:58:16,194 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:58:16,195 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:58:16,196 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:58:16,198 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:58:16,198 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 17:58:16,239 - nodes - INFO - Classified work packages for site 33 KV PAPAL SUB-STATION - Pimpri Nipani (ID: 68d2489d0b0fb330d00bacb9): 23 tasks, 5 packages, 1 risks
+2025-09-24 17:58:16,241 - nodes - INFO - Work package classification completed for 1 sites
+2025-09-24 17:58:16,253 - nodes - INFO - Starting parameter extraction
+2025-09-24 17:58:16,254 - nodes - INFO - Processing 1 actions: ['add_risk']
+2025-09-24 17:58:16,254 - nodes - INFO - Processing action: add_risk -> add_risk
+2025-09-24 17:58:16,256 - nodes - INFO - Extracting risk parameters...
+2025-09-24 17:58:16,543 - nodes - INFO - Found 1 existing risks for site 68d2489d0b0fb330d00bacb9
+2025-09-24 18:02:18,054 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-24 18:02:18,054 - __main__ - INFO - Initializing dependencies...
+2025-09-24 18:02:18,054 - startup - INFO - Initializing dependencies...
+2025-09-24 18:02:18,063 - startup - INFO - MongoDB connected successfully
+2025-09-24 18:02:19,183 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-24 18:02:19,727 - startup - INFO - Embedding model initialized successfully
+2025-09-24 18:02:19,999 - __main__ - INFO - Dependencies initialized successfully
+2025-09-24 18:02:20,000 - __main__ - INFO - Fetching sites from database...
+2025-09-24 18:02:22,829 - workflow - INFO - Creating WhatsApp workflow
+2025-09-24 18:02:22,853 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-24 18:02:22,856 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-24 18:02:22,857 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-24 18:02:23,158 - nodes - INFO - Starting context extraction
+2025-09-24 18:02:23,166 - nodes - INFO - Checking sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-24 18:02:25,269 - nodes - INFO - Found 13 total sites, using 10 examples for context
+2025-09-24 18:02:25,270 - nodes - INFO - Extracting context from messages...
+2025-09-24 18:02:25,270 - nodes - INFO - Generating context extraction prompt...
+2025-09-24 18:02:25,279 - nodes - INFO - Sending prompt to LLM...
+2025-09-24 18:02:30,510 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 18:02:30,537 - nodes - INFO - LLM response received. Content length: 560
+2025-09-24 18:02:30,549 - nodes - INFO - Extracted actions: ['add_risk']
+2025-09-24 18:02:30,549 - nodes - INFO - Extracted 1 actions: ['add_risk']
+2025-09-24 18:02:30,551 - workflow - INFO - Routing to work package classification
+2025-09-24 18:02:30,554 - nodes - INFO - Starting work package classification
+2025-09-24 18:02:32,910 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 18:02:32,912 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 18:02:32,913 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 18:02:32,914 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 18:02:32,914 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-24 18:02:32,915 - nodes - INFO - Classified work packages for site 33 KV PAPAL SUB-STATION - Pimpri Nipani (ID: 68d2489d0b0fb330d00bacb9): 23 tasks, 5 packages, 1 risks
+2025-09-24 18:02:32,917 - nodes - INFO - Work package classification completed for 1 sites
+2025-09-24 18:02:32,927 - nodes - INFO - Starting parameter extraction
+2025-09-24 18:02:32,928 - nodes - INFO - Processing 1 actions: ['add_risk']
+2025-09-24 18:02:32,929 - nodes - INFO - Processing action: add_risk -> add_risk
+2025-09-24 18:02:32,930 - nodes - INFO - Extracting risk parameters...
+2025-09-24 18:02:33,199 - nodes - INFO - Found 1 existing risks for site 68d2489d0b0fb330d00bacb9
+2025-09-24 18:02:38,665 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-24 18:02:38,727 - nodes - INFO - Successfully parsed risk parameters: 1 risks
+2025-09-24 18:02:38,727 - nodes - INFO - Risk parameters extracted: 1 risks
+2025-09-24 18:02:38,731 - nodes - INFO - Executing action execution node
+2025-09-24 18:02:38,735 - nodes - INFO - Action parameters received: {'add_risk': AddRiskInput(risks=[Risk(site_id='68d2489d0b0fb330d00bacb9', title='Rain Impact on Solar Power System at PAPAL Sub-Station', description='Rainfall at the 33 KV PAPAL SUB-STATION may cause operational disruptions or damage to the Solar Power Generating System, increasing the risk of electrical faults or safety hazards.', severity='medium', status='open', category='environmental')], title='Rain Impact on Solar Power System at PAPAL Sub-Station', summary='The WhatsApp message indicates rainfall at the PAPAL Sub-Station, which poses a risk to the solar power generating system due to potential operational disruptions or damage.', reasoning="The message 'papaL SUB-STATION Solar Power Generating System has rains' matches the site '33 KV PAPAL SUB-STATION - Pimpri Nipani'. Rainfall can cause electrical faults or safety hazards in solar power systems, so this weather condition is identified as a medium severity environmental risk.")}
+2025-09-24 18:02:38,735 - nodes - INFO - Available actions: ['add_risk']
+2025-09-24 18:02:40,629 - nodes - INFO - Database connection verified
+2025-09-24 18:02:40,630 - nodes - INFO - Preparing to add 1 risks
+2025-09-24 18:02:40,630 - nodes - INFO - Calling add_risk with 1 risks
+2025-09-24 18:02:40,631 - db_utils - INFO - Executing action: add_risk for 1 risks. Summary: The WhatsApp message indicates rainfall at the PAPAL Sub-Station, which poses a risk to the solar power generating system due to potential operational disruptions or damage.
+2025-09-24 18:02:40,631 - db_utils - INFO - Adding risk 1/1 for site_id: 68d2489d0b0fb330d00bacb9
+2025-09-24 18:02:43,397 - db_utils - INFO - Risk inserted: _id=68d3e4e8d780975433749cdf into collection sample_risks
+2025-09-24 18:02:43,398 - db_utils - INFO - Batch risk addition completed: 1/1 risks added successfully.
+2025-09-25 06:42:27,312 - __main__ - INFO - Creating WhatsApp agent...
+2025-09-25 06:42:27,313 - __main__ - INFO - Initializing dependencies...
+2025-09-25 06:42:27,313 - startup - INFO - Initializing dependencies...
+2025-09-25 06:42:27,329 - startup - INFO - MongoDB connected successfully
+2025-09-25 06:42:28,687 - startup - INFO - Azure OpenAI LLM initialized successfully
+2025-09-25 06:42:29,237 - startup - INFO - Embedding model initialized successfully
+2025-09-25 06:42:29,512 - __main__ - INFO - Dependencies initialized successfully
+2025-09-25 06:42:29,513 - __main__ - INFO - Fetching sites from database...
+2025-09-25 06:42:31,808 - workflow - INFO - Creating WhatsApp workflow
+2025-09-25 06:42:31,854 - __main__ - INFO - WhatsApp agent initialized successfully
+2025-09-25 06:42:31,855 - __main__ - INFO - WhatsApp agent created successfully
+2025-09-25 06:42:31,856 - __main__ - INFO - Executing workflow for 1 messages
+2025-09-25 06:42:32,210 - nodes - INFO - Starting context extraction
+2025-09-25 06:42:32,263 - nodes - INFO - Checking sites for project_id: 68d2479e8cb6cdbd6354e997
+2025-09-25 06:42:34,263 - nodes - INFO - Found 13 total sites, using 10 examples for context
+2025-09-25 06:42:34,264 - nodes - INFO - Extracting context from messages...
+2025-09-25 06:42:34,265 - nodes - INFO - Generating context extraction prompt...
+2025-09-25 06:42:34,273 - nodes - INFO - Sending prompt to LLM...
+2025-09-25 06:42:38,649 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-25 06:42:38,684 - nodes - INFO - LLM response received. Content length: 505
+2025-09-25 06:42:38,698 - nodes - INFO - Extracted actions: ['add_risk']
+2025-09-25 06:42:38,699 - nodes - INFO - Extracted 1 actions: ['add_risk']
+2025-09-25 06:42:38,702 - workflow - INFO - Routing to work package classification
+2025-09-25 06:42:38,706 - nodes - INFO - Starting work package classification
+2025-09-25 06:42:42,345 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-25 06:42:42,345 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-25 06:42:42,347 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-25 06:42:42,348 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-25 06:42:42,349 - nodes - WARNING - Package item is not a dictionary: <class 'str'>
+2025-09-25 06:42:42,352 - nodes - INFO - Classified work packages for site 33 KV PAPAL SUB-STATION - Pimpri Nipani (ID: 68d2489d0b0fb330d00bacb9): 23 tasks, 5 packages, 2 risks
+2025-09-25 06:42:42,353 - nodes - INFO - Work package classification completed for 1 sites
+2025-09-25 06:42:42,363 - nodes - INFO - Starting parameter extraction
+2025-09-25 06:42:42,364 - nodes - INFO - Processing 1 actions: ['add_risk']
+2025-09-25 06:42:42,365 - nodes - INFO - Processing action: add_risk -> add_risk
+2025-09-25 06:42:42,367 - nodes - INFO - Extracting risk parameters...
+2025-09-25 06:42:42,654 - nodes - INFO - Found 2 existing risks for site 68d2489d0b0fb330d00bacb9
+2025-09-25 06:42:46,010 - httpx - INFO - HTTP Request: POST https://alfredapi.openai.azure.com/openai/deployments/gpt-4.1-mini/chat/completions?api-version=2024-12-01-preview "HTTP/1.1 200 OK"
+2025-09-25 06:42:46,068 - nodes - INFO - Successfully parsed risk parameters: 1 risks
+2025-09-25 06:42:46,069 - nodes - INFO - Risk parameters extracted: 1 risks
+2025-09-25 06:42:46,072 - nodes - INFO - Executing action execution node
+2025-09-25 06:42:46,077 - nodes - INFO - Action parameters received: {'add_risk': AddRiskInput(risks=[Risk(site_id='68d2489d0b0fb330d00bacb9', title='Rain Impact on Solar Power System at PAPAL Sub-Station', description='Rainfall at the 33 KV PAPAL SUB-STATION may cause operational disruptions or damage to the Solar Power Generating System, increasing the risk of electrical faults or safety hazards.', severity='medium', status='open', category='environmental')], title='Rain Impact on Solar Power System at PAPAL Sub-Station', summary='A WhatsApp message reported rain at the PAPAL Sub-Station affecting the Solar Power Generating System, indicating a potential risk.', reasoning="The message mentions 'papaL SUB-STATION' and 'Solar Power Generating System has rains'. The closest matching site is '33 KV PAPAL SUB-STATION - Pimpri Nipani'. Rainfall can cause operational disruptions or damage to solar power equipment, increasing risk of electrical faults or safety hazards. Therefore, a risk related to rain impact on the solar power system is added.")}
+2025-09-25 06:42:46,078 - nodes - INFO - Available actions: ['add_risk']
+2025-09-25 06:42:49,397 - nodes - INFO - Database connection verified
+2025-09-25 06:42:49,398 - nodes - INFO - Preparing to add 1 risks
+2025-09-25 06:42:49,399 - nodes - INFO - Calling add_risk with 1 risks
+2025-09-25 06:42:49,400 - db_utils - INFO - Executing action: add_risk for 1 risks. Summary: A WhatsApp message reported rain at the PAPAL Sub-Station affecting the Solar Power Generating System, indicating a potential risk.
+2025-09-25 06:42:49,400 - db_utils - INFO - Adding risk 1/1 for site_id: 68d2489d0b0fb330d00bacb9
+2025-09-25 06:42:52,521 - db_utils - INFO - Risk inserted: _id=68d4971184926995c00c9fa3 into collection sample_risks
+2025-09-25 06:42:52,522 - db_utils - INFO - Batch risk addition completed: 1/1 risks added successfully.
