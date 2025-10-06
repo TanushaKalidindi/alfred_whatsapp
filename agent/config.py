@@ -7,30 +7,35 @@ from redis.connection import ConnectionPool, SSLConnection
 
 # Load environment variables from .env file if it exists
 from pathlib import Path
-load_dotenv(dotenv_path=Path(__file__).parent / ".env")
+
+load_dotenv()
 
 # Database Configuration
 DATABASE_CONFIG = {
-    "username": os.getenv("MONGODB_USERNAME", "alfred"),
-    "password": os.getenv("MONGODB_PASSWORD", "alfred-coco-cola"),
-    "host": os.getenv("MONGODB_HOST", "172.178.91.142"),
-    "port": int(os.getenv("MONGODB_PORT", 27017)),
-    "database": os.getenv("MONGODB_DATABASE", "alfred-coco-cola"),
-    "communications_db": os.getenv("COMMUNICATIONS_DB", "sample_communications"),
-    "risk_db": os.getenv("RISK_DB", "sample_risks"),
-    "task_db": os.getenv("TASK_DB", "alfred_tasks") ,
+    "username": os.getenv("MONGODB_USERNAME", "alfreddeveloper_db_user"),
+    "password": os.getenv("MONGODB_PASSWORD", "sBqjBA-n.5NX-qb"),
+    "cluster": os.getenv("MONGODB_CLUSTER", "alfreddemo.dcqqgb8.mongodb.net"),
+    "database": os.getenv("MONGODB_DATABASE", "purelight"),
+    "projects_db": os.getenv("PROJECTS_DB", "alfred_projects"),
+    "users_db": os.getenv("USERS_DB", "alfred_users"),
+    "communications_db": os.getenv("COMMUNICATIONS_DB", "alfred_communications"),
+    "risk_db": os.getenv("RISK_DB", "alfred_risks"),
+    "task_db": os.getenv("TASK_DB", "alfred_tasks"),
     "sites_db": os.getenv("SITES_DB", "alfred_sites"),
-    "package_db": os.getenv("PACKAGE_DB", "alfred_cwp"),
-    "notifications_db": os.getenv("NOTIFICATIONS_DB", "sample_notifications"),
+    "package_db": os.getenv("PACKAGE_DB", "alfred_packages"),
+    "notifications_db": os.getenv("NOTIFICATIONS_DB", "alfred_notifications"),
     "assets_db": os.getenv("ASSETS_DB", "alfred_assets"),
     "cwp_db": os.getenv("CWP_DB", "alfred_cwp"),
     "iwp_db": os.getenv("IWP_DB", "alfred_iwp"),
-    "project_id": os.getenv("PROJECT_ID"),
+    "staging_db": os.getenv("STAGING_DB", "alfred_staging"),
 }
 
 def get_database_uri() -> str:
-    """Construct MongoDB connection URI from config."""
-    return f"mongodb://{DATABASE_CONFIG['username']}:{DATABASE_CONFIG['password']}@{DATABASE_CONFIG['host']}:{DATABASE_CONFIG['port']}/{DATABASE_CONFIG['database']}"
+    """Construct MongoDB Atlas connection URI."""
+    return (
+        f"mongodb+srv://{DATABASE_CONFIG['username']}:{DATABASE_CONFIG['password']}"
+        f"@{DATABASE_CONFIG['cluster']}/{DATABASE_CONFIG['database']}?retryWrites=true&w=majority&appName=alfreddemo"
+    )
     
 
 # Qdrant Configuration

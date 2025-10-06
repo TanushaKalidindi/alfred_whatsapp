@@ -329,6 +329,55 @@ def get_task_context_for_llm(db, site_ids, site_names):
 
     return tasks_by_site
 
+
+def get_task_context_for_conflicts(db, site_ids, site_names):
+    """
+    Fetch tasks with audit logs for each site and return formatted strings suitable for detection/conflict prompts.
+    """
+    tasks_by_site = {}
+
+    if not isinstance(site_ids, list):
+        site_ids = [site_ids]
+    if not isinstance(site_names, list):
+        site_names = [site_names]
+
+    for site_id, site_name in zip(site_ids, site_names):
+        task_descriptions = []
+        if site_id and site_id != "null" and ObjectId.is_valid(site_id):
+            try:
+                task_docs = db[DATABASE_CONFIG["task_db"]].find(
+                    {"site_id": ObjectId(site_id), "audit_log": {"$exists": True, "$ne": []}},
+                    {"title": 1, "status": 1, "start_date": 1, "end_date": 1, "audit_log": 1}
+                )
+
+                for task in task_docs:
+                    task_id = str(task["_id"])
+                    task_name = task.get("title", "Unknown")
+                    status = task.get("status", "unknown")
+                    start_date = str(task.get("start_date", "N/A"))
+                    end_date = str(task.get("end_date", "N/A"))
+
+                    last_audit = task.get("audit_log", [])[-1] if task.get("audit_log") else {}
+                    audit_user = str(last_audit.get("user", ""))
+                    reasoning = last_audit.get("reasoning", "")
+                    new_change = last_audit.get("new_change", "")
+                    ts = str(last_audit.get("timestamp", ""))
+
+                    summary = (
+                        f"Task ID: {task_id} | Task: {task_name} | Status: {status} "
+                        f"| Start: {start_date} | End: {end_date} "
+                        f"| Last Change: {new_change} by {audit_user} at {ts} "
+                        f"| Reasoning: {reasoning}"
+                    )
+                    task_descriptions.append(summary)
+
+            except Exception as e:
+                logger.error(f"Error fetching tasks for site {site_id}: {e}")
+
+        tasks_by_site[site_name] = task_descriptions
+
+    return tasks_by_site
+
 def get_iwp_context_for_llm(db, site_ids, site_names):
     """
     Fetch concise IWP (Installation Work Package) context for each site, 

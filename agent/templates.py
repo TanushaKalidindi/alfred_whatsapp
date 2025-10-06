@@ -41,6 +41,26 @@ you will gibven whatsapp messages as an input, if its irrelavnt extract the acti
 {format_instructions}
 """
 
+# Task detection template (detect Task IDs mentioned in WhatsApp messages)
+task_detection_prompt_template = """
+You are a task detection agent. Your job is to read the WhatsApp message content and identify which Task IDs are referenced, if any.
+
+WhatsApp Message Content:
+{email_content_str}
+
+Known Tasks (per site):
+{tasks}
+
+Instructions:
+- Return a list of task_id values you are confident are referenced.
+- Include a confidence score per detected task between 0.0 and 1.0.
+- Provide a short reasoning per detected task.
+- Provide a short message/snippet per detected task.
+
+Output format:
+{format_instructions}
+"""
+
 # Risk addition template
 risk_prompt_template = """
 Based on the following WhatsApp conversation, extract risk information to add:

@@ -1,5 +1,5 @@
 import datetime
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Any
 from bson import ObjectId
 import logging
 from .schemas import RiskStatus, TaskStatus
@@ -122,6 +122,133 @@ def add_risk(risks: List[Dict], summary: str, title: str, From: str, db, work_pa
     
     return f"Batch risk addition completed: {success_count}/{total_count} risks added successfully. Details: {'; '.join(results)}"
 
+
+def fetch_task_data(db: Any, task_id: str) -> Dict[str, Any]:
+    """Fetch a single task document by Task ID from the configured task collection."""
+    try:
+        if not ObjectId.is_valid(task_id):
+            logger.warning(f"Invalid ObjectId format for Task ID: {task_id}")
+            return {}
+
+        collection = db[DATABASE_CONFIG["task_db"]]
+        doc = collection.find_one({"_id": ObjectId(task_id)})
+
+        if not doc:
+            logger.warning(f"No document found for Task ID: {task_id}")
+            return {}
+
+        return doc
+
+    except Exception as e:
+        logger.error(f"Error fetching Task data for {task_id}: {e}")
+        return {}
+
+
+def update_task_with_conflict(conflict: Any, db: Any) -> bool:
+    """Append conflict/non-conflict event to a task and raise comms/notification when conflict."""
+    try:
+        if not hasattr(conflict, "task_id") or not conflict.task_id:
+            return False
+
+        task_id_obj = ObjectId(conflict.task_id)
+        task_coll = db[DATABASE_CONFIG["task_db"]]
+
+        doc = task_coll.find_one({"_id": task_id_obj})
+        if not doc:
+            return False
+
+        is_conflict = bool(getattr(conflict, "conflict", False))
+        message_text = getattr(conflict, "message", "") or ""
+        similarity_score = getattr(conflict, "similarity_score", None)
+        reasoning_text = getattr(conflict, "reasoning", None)
+
+        evt_ts = getattr(conflict, "timestamp", datetime.datetime.utcnow())
+        if isinstance(evt_ts, str):
+            try:
+                evt_ts = datetime.datetime.fromisoformat(evt_ts)
+            except Exception:
+                evt_ts = datetime.datetime.utcnow()
+
+        if is_conflict:
+            try:
+                project_id = doc.get("project_id") or get_project_id()
+
+                comms_doc = {
+                    "_id": ObjectId(),
+                    "type": "data_conflict",
+                    "message": message_text,
+                    "title": "Conflict detected on Task",
+                    "status": "open",
+                    "source": "whatsapp",
+                    "action_taken": "decision",
+                    "From": "whatsapp_agent",
+                    "created_at": datetime.datetime.utcnow(),
+                    "updated_at": datetime.datetime.utcnow(),
+                    "acknowledged_at": datetime.datetime.utcnow(),
+                    "project_id": project_id,
+                    "task_id": task_id_obj,
+                }
+                comms_coll = db[DATABASE_CONFIG["communications_db"]]
+                comms_coll.insert_one(comms_doc)
+
+                notification_doc = {
+                    "title": "Conflict detected on Task",
+                    "description": message_text,
+                    "comms_id": str(comms_doc["_id"]),
+                    "task_id": str(task_id_obj),
+                    "created_at": datetime.datetime.utcnow(),
+                    "seen": False,
+                    "type": "data_conflict",
+                    "project_id": project_id,
+                }
+                notifications_coll = db[DATABASE_CONFIG["notifications_db"]]
+                notification_result = notifications_coll.insert_one(notification_doc)
+
+                try:
+                    r = get_redis_connection()
+                    payload = {
+                        "_id": str(notification_result.inserted_id),
+                        "title": "Conflict detected on Task",
+                        "description": message_text,
+                        "comms_id": notification_doc["comms_id"],
+                        "task_id": notification_doc["task_id"],
+                        "seen": False,
+                        "type": "data_conflict",
+                        "project_id": str(project_id),
+                    }
+                    r.publish("notifications", json.dumps(payload))
+                except Exception as pub_e:
+                    logger.warning(f"Redis publish failed: {pub_e}")
+
+            except Exception as inner_e:
+                logger.error(f"Error creating comms/notification for conflict: {inner_e}")
+            return False
+
+        # Append event for non-conflict
+        existing_log = doc.get("data_conflict_details", {}).get("event_log", [])
+        if isinstance(existing_log, dict):
+            existing_log = [existing_log]
+
+        event_entry = {
+            "timestamp": evt_ts,
+            "conflict": is_conflict,
+            "message": message_text,
+            "similarity_score": similarity_score,
+            "reasoning": reasoning_text,
+        }
+
+        update_data = {
+            "$set": {
+                "data_conflict_details.event_log": existing_log + [event_entry]
+            }
+        }
+
+        update_result = task_coll.update_one({"_id": task_id_obj}, update_data)
+        return update_result.modified_count > 0
+
+    except Exception as e:
+        logger.error(f"Error updating Task for conflict details: {e}")
+        return False
 
 def update_task(tasks: List[dict], summary: str, title: str, From: str, db, work_package_data, reasoning: Dict = None) -> str:
     """

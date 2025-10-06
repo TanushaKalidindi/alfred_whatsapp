@@ -366,3 +366,21 @@ class ConflictAnalysis(BaseModel):
     message: str = Field(..., description="Associated message")
     timestamp: datetime.datetime = Field(default_factory=datetime.datetime.utcnow, description="Timestamp of analysis")
 
+
+class TaskDetectionResult(BaseModel):
+    """Detection result of Task IDs referenced in a message."""
+    task_id: List[str] = Field(default_factory=list, description="Detected Task IDs")
+    confidence: List[float] = Field(default_factory=list, description="Confidence per detected Task")
+    reasoning: List[str] = Field(default_factory=list, description="Reasoning per detected Task")
+    message: List[str] = Field(default_factory=list, description="Associated snippet/message per Task")
+
+
+class TaskConflictAnalysis(BaseModel):
+    """Conflict analysis result for a Task."""
+    task_id: str = Field(..., description="Task ID being analyzed")
+    conflict: bool = Field(..., description="True if there is a meaningful conflict")
+    similarity_score: float = Field(..., ge=0.0, le=1.0, description="Similarity score between 0.0 and 1.0")
+    reasoning: str = Field(..., description="Explanation of the conflict decision")
+    message: str = Field(..., description="Associated message")
+    timestamp: datetime.datetime = Field(default_factory=datetime.datetime.utcnow, description="Timestamp of analysis")
+

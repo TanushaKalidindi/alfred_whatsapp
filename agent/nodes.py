@@ -12,17 +12,21 @@ from .schemas import (
     WhatsAppState, SiteIdExtraction, 
     AddRiskInput, UpdateTaskInput, UpdateRiskInput,
     WorkPackageClassification, WorkPackageAnalysisResponse,
-    updateResponse, IWPDetectionResult
+    updateResponse, IWPDetectionResult,
+    TaskDetectionResult, TaskConflictAnalysis
 )
 from .templates import (
     context_prompt_template, risk_prompt_template, 
-    task_prompt_template, risk_update_prompt_template
+    task_prompt_template, risk_update_prompt_template,
+    task_detection_prompt_template
 )
 from .db_utils import add_risk, update_task, update_risk, update_response_in_db
+from .db_utils import fetch_task_data as db_fetch_task_data, update_task_with_conflict as db_update_task_with_conflict
 from .utils import (
     get_risks_by_site, 
     get_all_site_names_and_ids,
     get_task_context_for_llm,
+    get_task_context_for_conflicts,
     get_iwp_context_for_llm,
     get_packages_by_site,
     detect_iwp_relationships,
@@ -37,6 +41,193 @@ risk_parser = PydanticOutputParser(return_id=False, pydantic_object=AddRiskInput
 task_parser = PydanticOutputParser(return_id=False, pydantic_object=UpdateTaskInput)
 risk_update_parser = PydanticOutputParser(return_id=False, pydantic_object=UpdateRiskInput)
 context_parser = PydanticOutputParser(return_id=False, pydantic_object=SiteIdExtraction)
+
+
+def detect_task_id(email_content_str: str, tasks: str, llm) -> TaskDetectionResult:
+    """Detect Task ID(s) from WhatsApp content using LLM."""
+    parser = PydanticOutputParser(pydantic_object=TaskDetectionResult)
+    format_instructions = parser.get_format_instructions()
+    prompt_text = task_detection_prompt_template.format(
+        email_content_str=email_content_str,
+        tasks=json.dumps(tasks, indent=2),
+        format_instructions=format_instructions
+    )
+    response = llm.invoke([HumanMessage(content=prompt_text)])
+    content = response.content if hasattr(response, "content") else str(response)
+    return parser.parse(content)
+
+
+async def data_conflict_agent(email_content: str, task_data: Dict[str, Any], llm) -> TaskConflictAnalysis:
+    """
+    Compare WhatsApp message against task data and detect conflicts (task-centric).
+    Returns TaskConflictAnalysis.
+    """
+    from langchain.output_parsers import PydanticOutputParser
+    from .schemas import TaskConflictAnalysis
+    from langchain.schema import HumanMessage
+    # Reuse the generic conflict prompt from utils-like style
+    conflict_prompt_template = (
+        "You are a conflict detection agent. Compare the WhatsApp message content against existing task data to detect meaningful conflicts.\n\n"
+        "WhatsApp Message Content:\n{email_content}\n\n"
+        "Existing Task Data:\n{task_data}\n\n"
+        "Analyze conflicts: status/timeline/scope/priority. Provide similarity score 0.0-1.0.\n\n{format_instructions}"
+    )
+    # Serialize task_data for prompt
+    def serialize(data):
+        if isinstance(data, list):
+            return [serialize(x) for x in data]
+        if isinstance(data, dict):
+            return {k: serialize(v) for k, v in data.items()}
+        try:
+            import datetime as _dt
+            from bson import ObjectId as _OID
+            if isinstance(data, _OID):
+                return str(data)
+            if isinstance(data, _dt.datetime):
+                return data.isoformat()
+        except Exception:
+            pass
+        return data
+    serializable_task_data = serialize(task_data)
+    parser = PydanticOutputParser(pydantic_object=TaskConflictAnalysis)
+    prompt_text = conflict_prompt_template.format(
+        email_content=email_content,
+        task_data=json.dumps(serializable_task_data, indent=2),
+        format_instructions=parser.get_format_instructions()
+    )
+    response = await llm.ainvoke([HumanMessage(content=prompt_text)])
+    content = response.content if hasattr(response, "content") else str(response)
+    return parser.parse(content)
+
+
+async def process_conflict_analysis_for_tasks(
+    result: Any,
+    email_content_str: str,
+    db: Any,
+    llm: Any
+) -> list:
+    """Process conflict analysis for multiple Task IDs asynchronously."""
+
+    task_ids = getattr(result, 'task_id', [])
+    confidences = getattr(result, 'confidence', [])
+    reasonings = getattr(result, 'reasoning', [])
+    messages = getattr(result, 'message', [])
+
+    # Ensure lists
+    if not isinstance(task_ids, list):
+        task_ids = [task_ids]
+    if not isinstance(confidences, list):
+        confidences = [confidences]
+    if not isinstance(reasonings, list):
+        reasonings = [reasonings]
+    if not isinstance(messages, list):
+        messages = [messages]
+
+    max_len = max(len(task_ids), len(confidences), len(reasonings), len(messages)) if task_ids else 0
+    task_ids += [None] * (max_len - len(task_ids))
+    confidences += [None] * (max_len - len(confidences))
+    reasonings += [None] * (max_len - len(reasonings))
+    messages += [None] * (max_len - len(messages))
+
+    async def process_single(task_id: str, _c, _r, _m):
+        if not task_id:
+            return False
+        try:
+            task_doc = db_fetch_task_data(db, task_id)
+            if not task_doc:
+                logger.warning(f"No task data found for Task {task_id}")
+                return False
+            conflict_result = await data_conflict_agent(
+                email_content=email_content_str,
+                task_data=task_doc,
+                llm=llm
+            )
+            # Ensure task_id present
+            conflict_result.task_id = task_id
+            success = db_update_task_with_conflict(conflict_result, db)
+            logger.info(f"{'✅' if success else '❌'} Processed Task {task_id}")
+            return success
+        except Exception as e:
+            logger.error(f"Error processing Task {task_id}: {e}")
+            return False
+
+    tasks = [process_single(tid, c, r, m) for tid, c, r, m in zip(task_ids, confidences, reasonings, messages) if tid]
+    if not tasks:
+        return []
+    import asyncio as _asyncio
+    results = await _asyncio.gather(*tasks, return_exceptions=False)
+    return results
+
+
+def task_detection_and_conflict_node(state: Dict[str, Any], config: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    LangGraph node for Task detection and conflict analysis from WhatsApp content.
+    """
+    logger.info("Starting Task Detection & Conflict Analysis Node...")
+    try:
+        # Compose WhatsApp content string
+        whatsapp_messages = state.get("whatsapp_messages", [])
+        email_content_str = "\n".join([
+            (m.get("text") or m.get("message") or (m.get("body", {}) if isinstance(m.get("text"), dict) else "")) if isinstance(m, dict) else str(m)
+            for m in whatsapp_messages
+        ])
+
+        db = state.get("db") or get_database()
+        llm = config.get("llm")
+
+        site_ids = state.get("site_ids", [])
+        site_names = state.get("site_names", [])
+
+        if not llm:
+            state["task_error"] = "LLM not available"
+            return state
+
+        # Step 1: Get Tasks with reasoning/audit context
+        tasks = get_task_context_for_conflicts(db, site_ids, site_names)
+        state["tasks"] = tasks
+
+        # Step 2: Detect Task IDs
+        if isinstance(tasks, dict):
+            formatted_tasks = ""
+            for sname, tlist in tasks.items():
+                formatted_tasks += f"Site: {sname}\n"
+                if tlist:
+                    for task_string in tlist:
+                        formatted_tasks += f"  - {task_string}\n"
+                else:
+                    formatted_tasks += "  - No tasks found with audit logs\n"
+        else:
+            formatted_tasks = str(tasks)
+
+        detection_result = detect_task_id(email_content_str, formatted_tasks, llm)
+        state["task_detection_result"] = detection_result
+
+        # Step 3: Conflict analysis for detected tasks
+        # Run async helper synchronously
+        def _run(coro):
+            import concurrent.futures, asyncio as _asyncio
+            with concurrent.futures.ThreadPoolExecutor(max_workers=1) as ex:
+                fut = ex.submit(_asyncio.run, coro)
+                return fut.result()
+
+        conflict_results = _run(
+            process_conflict_analysis_for_tasks(
+                detection_result,
+                email_content_str,
+                db,
+                llm,
+            )
+        )
+        state["task_conflict_analysis_results"] = conflict_results
+
+        logger.info("✅ Task Detection & Conflict Analysis Node Complete!")
+        return state
+
+    except Exception as e:
+        error_msg = f"[TASK_NODE] Error: {str(e)}"
+        logger.error(error_msg, exc_info=True)
+        state["task_error"] = error_msg
+        return state
 
 def extract_site_info_llm(email_content: str, sites_string: str, llm) -> IWPDetectionResult:
     """Extract site information from email content using LLM"""
@@ -1273,7 +1464,7 @@ def iwp_detection_and_conflict_node(state: Dict[str, Any], config: Dict[str, Any
         logger.info(f"  - Related IWPs: {len(detection_result.related_iwp_ids)}")
         logger.info(f"  - Related IDs: {detection_result.related_iwp_ids}")
         
-        
+        s
         # Step 3: Process conflicts ONLY for related IWPs
         if detection_result.related_iwp_ids:
             import asyncio

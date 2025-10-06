@@ -6,7 +6,7 @@ from .nodes import (
     work_package_classification_node,
     parameter_extraction_node,
     action_execution_node,
-    iwp_detection_and_conflict_node
+    task_detection_and_conflict_node
 )
 
 logger = logging.getLogger(__name__)
@@ -46,8 +46,8 @@ def create_whatsapp_workflow(llm, db, project_id=None):
     workflow.add_node("extract_context", 
                      wrap_node(context_extraction_node))
     
-    workflow.add_node("iwp_detection", 
-                     wrap_node(iwp_detection_and_conflict_node))
+    workflow.add_node("task_detection", 
+                     wrap_node(task_detection_and_conflict_node))
 
     workflow.add_node("classify_work_packages", 
                      wrap_node(work_package_classification_node))
@@ -66,13 +66,13 @@ def create_whatsapp_workflow(llm, db, project_id=None):
         "extract_context",
         route_after_context_extraction,
         {
-            "iwp_detection": "iwp_detection",
+            "task_detection": "task_detection",
             "end": END
         }
     )
     
-    # IWP detection runs first to get IWP data
-    workflow.add_edge("iwp_detection", "classify_work_packages")
+    # Task detection runs first to get related tasks/conflicts
+    workflow.add_edge("task_detection", "classify_work_packages")
     workflow.add_edge("classify_work_packages", "extract_parameters")
     workflow.add_edge("extract_parameters", "execute_actions")
     workflow.add_edge("execute_actions", END)
@@ -104,6 +104,6 @@ def route_after_context_extraction(state: WhatsAppState) -> str:
         logger.info("No actionable items found")
         return "end"
     
-    # Continue to IWP detection
-    logger.info("Routing to IWP detection")
-    return "iwp_detection"
+    # Continue to Task detection
+    logger.info("Routing to Task detection")
+    return "task_detection"
