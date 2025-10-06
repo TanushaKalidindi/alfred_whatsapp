@@ -15,7 +15,7 @@ DATABASE_CONFIG = {
     "username": os.getenv("MONGODB_USERNAME", "alfreddeveloper_db_user"),
     "password": os.getenv("MONGODB_PASSWORD", "sBqjBA-n.5NX-qb"),
     "cluster": os.getenv("MONGODB_CLUSTER", "alfreddemo.dcqqgb8.mongodb.net"),
-    "database": os.getenv("MONGODB_DATABASE", "purelight"),
+    "database": os.getenv("MONGODB_DATABASE", "alfreddemo"),
     "projects_db": os.getenv("PROJECTS_DB", "alfred_projects"),
     "users_db": os.getenv("USERS_DB", "alfred_users"),
     "communications_db": os.getenv("COMMUNICATIONS_DB", "alfred_communications"),
