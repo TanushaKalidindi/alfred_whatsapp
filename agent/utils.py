@@ -25,7 +25,7 @@ Existing Task Data:
 
 Analyze if there are any meaningful conflicts between the WhatsApp message and the existing task data.
 Focus on:
-1. Status conflicts (e.g., message says "completed" but task shows "in progress")
+1. Status conflicts (e.g., message says "completed" but task shows "in_progress")
 2. Timeline conflicts (e.g., different completion dates)
 3. Scope conflicts (e.g., different work descriptions)
 4. Priority conflicts (e.g., different urgency levels)

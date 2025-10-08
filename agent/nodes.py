@@ -172,7 +172,9 @@ def task_detection_and_conflict_node(state: Dict[str, Any], config: Dict[str, An
             for m in whatsapp_messages
         ])
 
-        db = state.get("db") or get_database()
+        db = state.get("db")
+        if db is None:
+            db = get_database()
         llm = config.get("llm")
 
         site_ids = state.get("site_ids", [])
@@ -279,6 +281,7 @@ def extract_whatsapp_context(whatsapp_messages: list, sites_string: str, llm) ->
     """Extract context from WhatsApp messages."""
     try:
         logger.info("Generating context extraction prompt...")
+        logger.info(f"Sites being sent to LLM: {sites_string}")
         prompt = context_prompt_template.format(
             messages=whatsapp_messages,
             sites=sites_string,
@@ -288,6 +291,7 @@ def extract_whatsapp_context(whatsapp_messages: list, sites_string: str, llm) ->
         logger.info("Sending prompt to LLM...")
         response = llm.invoke([HumanMessage(content=prompt)])
         logger.info(f"LLM response received. Content length: {len(response.content) if response.content else 0}")
+        logger.info(f"LLM raw response: {response.content}")
         
         logger.debug(f"Parsing LLM response: {response.content[:200]}...")
         
@@ -378,7 +382,7 @@ def context_extraction_node(state: WhatsAppState, config: Dict[str, Any]) -> Wha
             sample_sites = list(sites_collection.find(
                 {"project_id": project_id}, 
                 {"_id": 1, "name": 1, "location": 1}
-            ).limit(10))
+            ))
             
             if sample_sites:
                 site_examples = []
@@ -389,8 +393,6 @@ def context_extraction_node(state: WhatsAppState, config: Dict[str, Any]) -> Wha
                     site_examples.append(f"{site_name} ({site_id}) - {location}")
                 
                 sites_string = f"Total sites: {total_sites}. Examples: " + ", ".join(site_examples)
-                if total_sites > 10:
-                    sites_string += f" ... and {total_sites - 10} more sites"
             else:
                 sites_string = "No sites found"
                 

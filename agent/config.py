@@ -3,11 +3,9 @@ import warnings
 from typing import Dict, Any
 from dotenv import load_dotenv
 from redis import Redis
-from redis.connection import ConnectionPool, SSLConnection
+from redis.connection import ConnectionPool
 
 # Load environment variables from .env file if it exists
-from pathlib import Path
-
 load_dotenv()
 
 # Database Configuration
@@ -16,18 +14,17 @@ DATABASE_CONFIG = {
     "password": os.getenv("MONGODB_PASSWORD", "sBqjBA-n.5NX-qb"),
     "cluster": os.getenv("MONGODB_CLUSTER", "alfreddemo.dcqqgb8.mongodb.net"),
     "database": os.getenv("MONGODB_DATABASE", "alfreddemo"),
-    "projects_db": os.getenv("PROJECTS_DB", "alfred_projects"),
-    "users_db": os.getenv("USERS_DB", "alfred_users"),
     "communications_db": os.getenv("COMMUNICATIONS_DB", "alfred_communications"),
     "risk_db": os.getenv("RISK_DB", "alfred_risks"),
-    "task_db": os.getenv("TASK_DB", "alfred_tasks"),
+    "task_db": os.getenv("TASK_DB", "alfred_tasks") ,
     "sites_db": os.getenv("SITES_DB", "alfred_sites"),
-    "package_db": os.getenv("PACKAGE_DB", "alfred_packages"),
+    "package_db": os.getenv("PACKAGE_DB", "alfred_cwp"),
     "notifications_db": os.getenv("NOTIFICATIONS_DB", "alfred_notifications"),
     "assets_db": os.getenv("ASSETS_DB", "alfred_assets"),
     "cwp_db": os.getenv("CWP_DB", "alfred_cwp"),
     "iwp_db": os.getenv("IWP_DB", "alfred_iwp"),
-    "staging_db": os.getenv("STAGING_DB", "alfred_staging"),
+    "project_id": os.getenv("PROJECT_ID"),
+    "email_event_log": os.getenv("EMAIL_EVENT_LOG", "alfred_email_event_log"),
 }
 
 def get_database_uri() -> str:
@@ -36,7 +33,6 @@ def get_database_uri() -> str:
         f"mongodb+srv://{DATABASE_CONFIG['username']}:{DATABASE_CONFIG['password']}"
         f"@{DATABASE_CONFIG['cluster']}/{DATABASE_CONFIG['database']}?retryWrites=true&w=majority&appName=alfreddemo"
     )
-    
 
 # Qdrant Configuration
 QDRANT_CONFIG = {
@@ -46,14 +42,24 @@ QDRANT_CONFIG = {
     "vector_dim": int(os.getenv("VECTOR_DIM", 1536)),
 }
 
-# OpenAI/Azure Configuration
-OPENAI_CONFIG = {
-    "api_key": os.getenv("OPENAI_API_KEY", "your-default-api-key"),  # Added default
-    "api_version": os.getenv("OPENAI_API_VERSION", "2024-12-01-preview"),  # Added default
-    "azure_endpoint": os.getenv("AZURE_OPENAI_ENDPOINT", "https://alfredapi.openai.azure.com"),  # Added default
-    "azure_deployment": os.getenv("AZURE_OPENAI_DEPLOYMENT", "gpt-4.1-mini"),  # Added default
-    "embedding_deployment": os.getenv("AZURE_EMBEDDING_DEPLOYMENT", "text-embedding-3-small"),
-    "embedding_api_version": os.getenv("EMBEDDING_API_VERSION", "2023-05-15"),
+def _resolve_google_api_key() -> str | None:
+    """Resolve the Google/Gemini API key from multiple possible environment variables."""
+    for var in [
+        "GOOGLE_API_KEY",
+        "GEMINI_API_KEY",
+        "GOOGLE_GENAI_API_KEY",
+        "GOOGLE_GEMINI_API_KEY",
+        "GENAI_API_KEY",
+    ]:
+        val = os.getenv(var)
+        if val and val.strip():
+            return val.strip()
+    return None
+
+# Google Generative AI Configuration
+GOOGLE_CONFIG={
+    "api_key": _resolve_google_api_key(),
+    "model": os.getenv("LLM_MODEL_NAME", "gemini-2.0-flash-lite"),
 }
 
 # Application Settings
@@ -83,19 +89,23 @@ GMAIL_CONFIG = {
     "token_path": os.getenv("TOKEN_PATH"),
 }
 
-PROJECT_CONFIG = {
-    "project_id": os.getenv("PROJECT_ID"),
-}
+# Global variable to store current project_id from trigger request
+_current_project_id = None
+
+def set_current_project_id(project_id: str):
+    """Set the current project_id for this processing session"""
+    global _current_project_id
+    _current_project_id = project_id
+
+def get_current_project_id() -> str:
+    """Get the current project_id for this processing session"""
+    global _current_project_id
+    return _current_project_id or os.getenv("PROJECT_ID")
 
 def get_project_id() -> str:
-    """Return the canonical project_id from environment/config.
-    Falls back across config blocks to keep a single source of truth.
-    """
-    return (
-        PROJECT_CONFIG.get("project_id")
-        or DATABASE_CONFIG.get("project_id")
-        or os.getenv("PROJECT_ID")
-    )
+    """Alias for get_current_project_id for backward compatibility"""
+    return get_current_project_id()
+
 SCHEDULER_CONFIG = {
     "project_id": os.getenv("PROJECT_ID"),
     'interval_minutes': int(os.getenv("RUN_INTERVAL_MINUTES", "3")), 
@@ -106,69 +116,27 @@ SCHEDULER_CONFIG = {
     'enable_scheduling': True,
 }
 
-# Redis configuration (optional)
-# Toggle to enable/disable Redis usage. Defaults to disabled for local dev.
-REDIS_ENABLED = os.getenv("REDIS_ENABLED", "True").lower() == "true"
-REDIS_HOST = os.getenv("REDIS_HOST", "127.0.0.1")
-REDIS_PORT = int(os.getenv("REDIS_PORT", "6379"))
-REDIS_USERNAME = os.getenv("REDIS_USERNAME")
-REDIS_PASSWORD = os.getenv("REDIS_PASSWORD")
-REDIS_SSL = os.getenv("REDIS_SSL", "false").lower() == "true"
+redis_pool = ConnectionPool(
+    host=os.getenv("REDIS_HOST"),
+    port=int(os.getenv("REDIS_PORT")),
+    username=os.getenv("REDIS_USERNAME"),
+    password=os.getenv("REDIS_PASSWORD"),
+    decode_responses=True,
+    max_connections=10,  # should be below Redis Cloud plan limit
+    socket_connect_timeout=5,
+    socket_timeout=5,
+    retry_on_timeout=True
+)
 
-redis_pool = None
-redis_client = None
-if REDIS_ENABLED:
-    import logging
-    logger = logging.getLogger(__name__)
-    logger.info(f"Redis config -> ENABLED={REDIS_ENABLED}, HOST={REDIS_HOST}, PORT={REDIS_PORT}, SSL={REDIS_SSL}")
-    
-    try:
-        from redis import from_url
-        
-        if REDIS_SSL:
-            redis_url = f"rediss://{REDIS_USERNAME}:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}"
-            redis_client = from_url(
-                redis_url,
-                decode_responses=True,
-                ssl_cert_reqs=None,
-                socket_connect_timeout=5,
-                socket_timeout=5
-            )
-        else:
-            redis_url = f"redis://{REDIS_USERNAME}:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}"
-            redis_client = from_url(redis_url, decode_responses=True)
-        
-        redis_client.ping()
-        logger.info("✅ Redis connection successful")
-        
-    except Exception as e:
-        logger.error(f"❌ Redis connection failed: {e}")
-        redis_client = None
 
 def get_redis_connection() -> Redis:
-    """Get a Redis connection from the pool.
-    Raises a helpful error if Redis is disabled.
-    """
-    if not REDIS_ENABLED or (redis_pool is None and redis_client is None):
-        raise RuntimeError(
-            "Redis is disabled. Set REDIS_ENABLED=true and configure REDIS_HOST/REDIS_PORT to enable it."
-        )
-    # Prefer the direct client if available
-    if redis_client is not None:
-        return redis_client
-    # Otherwise, create a client from the connection pool
+    """Get a Redis connection from the pool."""
     return Redis(connection_pool=redis_pool)
 
 def close_redis_connections():
     """Close all connections in the Redis pool."""
-    if redis_client:
-        try:
-            redis_client.close()
-        except Exception:
-            pass
-    if redis_pool:
-        redis_pool.disconnect()
-
+    redis_pool.disconnect()
+# email_agent/org_config.py
 
 # Dictionary mapping organization IDs to their email configurations
 ORG_EMAIL_CONFIG = {
@@ -209,8 +177,7 @@ def validate_config() -> None:
     
     # Checking for missing critical environment variables
     critical_vars = {
-        "OPENAI_API_KEY": "Required for OpenAI API access",
-        "AZURE_OPENAI_ENDPOINT": "Required for Azure OpenAI service"
+        "GOOGLE_API_KEY": "Required for Google Generative AI access (Gemini)",
     }
     
     # Checking for production-specific variables
@@ -222,7 +189,7 @@ def validate_config() -> None:
     missing_production = []
     
     for var, msg in critical_vars.items():
-        if not os.getenv(var):
+        if not os.getenv(var) and not GOOGLE_CONFIG.get("api_key"):
             missing_critical.append(var)
     
     for var, msg in production_vars.items():
@@ -249,14 +216,16 @@ validate_config()
 __all__ = [
     'DATABASE_CONFIG',
     'QDRANT_CONFIG', 
-    'OPENAI_CONFIG',
+    'GOOGLE_CONFIG',
     'APP_CONFIG',
     'GMAIL_CONFIG',
     'SCHEDULER_CONFIG',
-    'REDIS_CONFIG',
-    'PROJECT_CONFIG',
     'get_database_uri',
     'validate_config',
-    'GCP_STORAGE_CONFIG'
+    'GCP_STORAGE_CONFIG',
+    'get_redis_connection',
+    'set_current_project_id',
+    'get_current_project_id',
+    'get_project_id',
 ]
 

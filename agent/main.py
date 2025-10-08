@@ -12,7 +12,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__name__)))
 from .workflow import create_whatsapp_workflow
 from .startup import initialize_dependencies
 from .utils import get_all_site_names_and_ids
-from .config import DATABASE_CONFIG, PROJECT_CONFIG, get_project_id
+from .config import DATABASE_CONFIG, get_project_id
 
 logger = logging.getLogger(__name__)
 
