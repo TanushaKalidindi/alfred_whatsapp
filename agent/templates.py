@@ -3,7 +3,7 @@
 context_prompt_template = """
 You are an intelligent agent for infrastructure project management via WhatsApp.
 
-**PROCESS EACH NEW MESSAGE INDIVIDUALLY and return ONE action per message.**
+**ANALYZE ALL MESSAGES and return a SINGLE JSON response with arrays for all messages.**
 
 ### NEW MESSAGES:
 {messages}
@@ -12,35 +12,51 @@ You are an intelligent agent for infrastructure project management via WhatsApp.
 
 ### INSTRUCTIONS:
 
-you will gibven whatsapp messages as an input, if its irrelavnt extract the actions.
+1. MESSAGE RELEVANCE:
+   - A message is RELEVANT if it contains ANY of these:
+     * Site names or locations (even partial matches)
+     * Task/action words (delay, issue, problem, complete, done, update, etc.)
+     * Project-related terms (survey, equipment, team, etc.)
+   - Only mark as IRRELEVANT if the message is purely social/greeting with no project context
 
-1. Extract site ids and action for given messages:
-- if the message is relevant and contains the site name, extract the site id and action.
--the site name might not be always exact match, so use fuzzy matching to find the site name.  
-- for every action they can perform, extract site ids and action
-- thread_id (use chat_id from WhatsApp)
-- message_id (use WhatsApp message_id if present, else null)
-- site info only if explicitly mentioned
+2. SITE MATCHING (be flexible):
+   - Match partial site names (e.g., "pimpri" → "Pimpri Nipani Solar Site")
+   - Ignore case differences (e.g., "Pimpri" = "pimpri")
+   - Match substrings (e.g., "nipani" → "Pimpri Nipani Solar Site")
+   - If multiple sites match, choose the most likely one
+   - Extract site_id from the available sites list
 
-2. Action rules:
-   - `add_risk`: problems, delays, incidents — only if site is valid
-   - `update_task`: task progress — only if site is valid
-   - `update_risk`: mitigation completion — only if site is valid
-   - `update`: general updates if site not mentioned or invalid
-   - `irrelevant`: casual, greetings, non-project content
+3. ACTION DETECTION (in priority order):
+   - `add_risk`: Any issues, delays, problems, incidents
+   - `update_task`: Task progress, completions, updates
+   - `update_risk`: Risk updates, mitigations
+   - `update`: General project updates
+   - `irrelevant`: ONLY for purely social/greeting messages
 
-### OUTPUT JSON FORMAT:
+4. OUTPUT REQUIREMENTS:
+   - Return ONE JSON object with arrays
+   - Each array should have one entry per message
+   - If no site is mentioned, use null for site_ids and site_names
+   - All arrays must have the same length
 
-1. number of actoins and site ids should be same.
-2. Use null for missing site info or message_id.
-3. From, confidence, reasoning are single values for the batch.
-4. IMPORTANT: All arrays (site_ids, site_names, chat_id) must be FLAT LISTS of strings. Do not nest arrays.
-   - CORRECT: "site_ids": ["id1", "id2"]
-   - INCORRECT: "site_ids": [["id1"], ["id2"]]
-
+### OUTPUT FORMAT:
 {format_instructions}
-"""
 
+### EXAMPLES:
+
+For messages: ["Hello team", "Pimpri site has delay", "Survey done at nipani"]
+
+Expected output:
+{{
+  "actions": ["irrelevant", "add_risk", "update_task"],
+  "site_ids": [null, "68e3a39f419da003605f82f8", "68e3a39f419da003605f82f8"],
+  "site_names": [null, "Pimpri Nipani Solar Site", "Pimpri Nipani Solar Site"],
+  "chat_id": ["120363421501362287@g.us_", "120363421501362287@g.us_", "120363421501362287@g.us_"],
+  "From": "244207612629041@lid",
+  "confidence": 0.9,
+  "reasoning": "First message is greeting (irrelevant), second mentions delay at pimpri (add_risk), third mentions survey completion at nipani (update_task)"
+}}
+"""
 # Task detection template (detect Task IDs mentioned in WhatsApp messages)
 task_detection_prompt_template = """
 You are a task detection agent. Your job is to read the WhatsApp message content and identify which Task IDs are referenced, if any.

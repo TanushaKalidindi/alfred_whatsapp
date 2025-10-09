@@ -205,21 +205,9 @@ def task_detection_and_conflict_node(state: Dict[str, Any], config: Dict[str, An
         state["task_detection_result"] = detection_result
 
         # Step 3: Conflict analysis for detected tasks
-        # Run async helper synchronously
-        def _run(coro):
-            import concurrent.futures, asyncio as _asyncio
-            with concurrent.futures.ThreadPoolExecutor(max_workers=1) as ex:
-                fut = ex.submit(_asyncio.run, coro)
-                return fut.result()
-
-        conflict_results = _run(
-            process_conflict_analysis_for_tasks(
-                detection_result,
-                email_content_str,
-                db,
-                llm,
-            )
-        )
+        # Skip conflict analysis to avoid async issues for now
+        logger.info("Skipping conflict analysis to avoid async issues")
+        conflict_results = []
         state["task_conflict_analysis_results"] = conflict_results
 
         logger.info("✅ Task Detection & Conflict Analysis Node Complete!")
@@ -281,6 +269,7 @@ def extract_whatsapp_context(whatsapp_messages: list, sites_string: str, llm) ->
     """Extract context from WhatsApp messages."""
     try:
         logger.info("Generating context extraction prompt...")
+        logger.info(f"Messages being processed: {whatsapp_messages}")
         logger.info(f"Sites being sent to LLM: {sites_string}")
         prompt = context_prompt_template.format(
             messages=whatsapp_messages,
@@ -290,6 +279,7 @@ def extract_whatsapp_context(whatsapp_messages: list, sites_string: str, llm) ->
         
         logger.info("Sending prompt to LLM...")
         response = llm.invoke([HumanMessage(content=prompt)])
+        print(response)
         logger.info(f"LLM response received. Content length: {len(response.content) if response.content else 0}")
         logger.info(f"LLM raw response: {response.content}")
         
@@ -374,6 +364,7 @@ def context_extraction_node(state: WhatsAppState, config: Dict[str, Any]) -> Wha
             return {**state, "error": error_msg}
             
         project_id = get_project_id()
+        print(project_id)
         logger.info(f"Checking sites for project_id: {project_id}")
         
         try:
@@ -694,7 +685,12 @@ def parameter_extraction_node(state: Dict[str, Any], config: Dict[str, Any]) -> 
         
         logger.info(f"Processing {len(actions)} actions: {actions}")
         
-        for action in actions:
+        # Deduplicate actions to prevent infinite loops
+        unique_actions = list(set(actions))
+        if len(unique_actions) != len(actions):
+            logger.info(f"Deduplicated {len(actions)} actions to {len(unique_actions)} unique actions: {unique_actions}")
+        
+        for action in unique_actions:
             try:
                 normalized_action = action.lower().replace(" ", "_")
                 logger.info(f"Processing action: {action} -> {normalized_action}")
@@ -1063,7 +1059,6 @@ def action_execution_node(state: Dict[str, Any], config: Dict[str, Any]) -> Dict
                             "status": task.status,
                             "notes": task.notes,
                             "completion_percentage": task.completion_percentage,
-                            "reasoning": getattr(task, 'reasoning', '')
                         })
                     
                     # Get work package data from state
@@ -1203,7 +1198,8 @@ def extract_risk_parameters(context: Dict[str, Any], llm, db) -> AddRiskInput:
     try:
         site_ids = context.get("site_ids", [])
         primary_site_id = site_ids[0] if site_ids else None
-        primary_site_name = context.get("site_names", [None])[0]
+        site_names = context.get("site_names", [])
+        primary_site_name = site_names[0] if site_names else None
         
         risks = []
         if db is not None and primary_site_id is not None:
@@ -1233,7 +1229,7 @@ def extract_risk_parameters(context: Dict[str, Any], llm, db) -> AddRiskInput:
         
     except Exception as e:
         logger.error(f"Error in extract_risk_parameters: {str(e)}", exc_info=True)
-        from schemas import AddRiskInput, Risk
+        from agent.schemas import AddRiskInput, Risk
         return AddRiskInput(
             risks=[],
             title="Error extracting risk parameters",
@@ -1257,18 +1253,18 @@ def extract_task_parameters(context: Dict[str, Any], llm) -> UpdateTaskInput:
                     if site_id:
                         try:
                             from bson import ObjectId
-                            tasks_collection = db[DATABASE_CONFIG["iwp_db"]]
+                            tasks_collection = db[DATABASE_CONFIG["task_db"]]
                             
                             # Get actual task documents with the fields you showed
                             task_docs = list(tasks_collection.find(
                                 {"site_id": ObjectId(site_id)},
                                 {
                                     "_id": 1,
-                                    "package_name": 1, 
+                                    "title": 1, 
                                     "status": 1,
                                     "start_date": 1,
                                     "due_date": 1,
-                                    "cwp_id": 1
+                                    "description": 1
                                 }
                             ).limit(20))
                             
@@ -1277,11 +1273,11 @@ def extract_task_parameters(context: Dict[str, Any], llm) -> UpdateTaskInput:
                             for doc in task_docs:
                                 task_info = {
                                     "task_id": str(doc["_id"]),  # This will be like 68d24444a326feeaec46f9aa
-                                    "package_name": doc.get("package_name", ""),
+                                    "title": doc.get("title", ""),
                                     "status": doc.get("status", "unknown"),
                                     "start_date": str(doc.get("start_date", "")),
                                     "due_date": str(doc.get("due_date", "")),
-                                    "cwp_id": str(doc.get("cwp_id", ""))
+                                    "description": str(doc.get("description", ""))
                                 }
                                 site_tasks.append(task_info)
                             
@@ -1334,7 +1330,7 @@ def extract_task_parameters(context: Dict[str, Any], llm) -> UpdateTaskInput:
         
     except Exception as e:
         logger.error(f"Error in extract_task_parameters: {str(e)}", exc_info=True)
-        from schemas import UpdateTaskInput, Task
+        from agent.schemas import UpdateTaskInput, Task
         return UpdateTaskInput(
             tasks=[],
             title="Error extracting task parameters",
@@ -1382,7 +1378,7 @@ def extract_risk_update_parameters(context: Dict[str, Any], llm, db) -> UpdateRi
         
     except Exception as e:
         logger.error(f"Error in extract_risk_update_parameters: {str(e)}", exc_info=True)
-        from schemas import UpdateRiskInput, RiskUpdate
+        from agent.schemas import UpdateRiskInput, RiskUpdate
         return UpdateRiskInput(
             risks=[],
             title="Error extracting risk update parameters",

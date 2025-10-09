@@ -24,6 +24,15 @@ app.add_middleware(
 # Global variable for the WhatsApp agent instance
 whatsapp_agent = None
 
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for Docker health checks"""
+    return {
+        "status": "healthy",
+        "service": "whatsapp-agent",
+        "agent_initialized": whatsapp_agent is not None
+    }
+
 class UnreadMessage(BaseModel):
     chat_id: str
     chat_name: str

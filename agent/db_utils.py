@@ -254,7 +254,7 @@ def update_task(tasks: List[dict], summary: str, title: str, From: str, db, work
     """
     Update multiple tasks in the database with work package information.
     Also logs into communications collection for audit.
-    
+
     Args:
         tasks: List of task dictionaries to update
         summary: Summary of the update
@@ -267,6 +267,10 @@ def update_task(tasks: List[dict], summary: str, title: str, From: str, db, work
     logger.info(f"Executing action: update_task for {len(tasks)} tasks. Summary: {summary}")
     results = []
 
+    task_collection = db[DATABASE_CONFIG["task_db"]]
+    comms_collection = db[DATABASE_CONFIG["communications_db"]]
+    notif_collection = db[DATABASE_CONFIG["notifications_db"]]
+
     for i, task_data in enumerate(tasks):
         task_id = task_data.get("task_id")
         status = task_data.get("status")
@@ -275,24 +279,23 @@ def update_task(tasks: List[dict], summary: str, title: str, From: str, db, work
         logger.info(f"Updating task {i+1}/{len(tasks)} with task_id: {task_id}")
 
         try:
-            task_collection = db[DATABASE_CONFIG["iwp_db"]]
-            comms_collection = db[DATABASE_CONFIG["communications_db"]]
-            notif_collection = db[DATABASE_CONFIG["notifications_db"]]
-            
-            # Log the task ID and collection being used
-            logger.info(f"Attempting to update task with ID: {task_id}")
-            logger.info(f"Using collection: {DATABASE_CONFIG['iwp_db']}")
-
-            # Build update fields
+            # --- Build update fields ---
             update_fields = {
                 "status": status,
                 "updated_at": datetime.datetime.utcnow(),
-                "updated_by": ObjectId("68ac443d8f7fde8cc31cc0d9"),
+                "updated_by": ObjectId("68e362f6dfc2824317e90466"),  # TODO: dynamic
                 "reasoning": reasoning,
                 "agent_update": True
             }
 
-            # Add work package information if available
+            audit_entry = {
+                "user": ObjectId("68e362f6dfc2824317e90466"),  # TODO: dynamic
+                "reasoning": reasoning,
+                "timestamp": datetime.datetime.utcnow(),
+                "new_change": status
+            }
+
+            # --- Add work package impact info if available ---
             if work_package_data:
                 update_fields["work_package_impact"] = {
                     "affected_cwps": work_package_data.get("affected_cwps", []),
@@ -303,89 +306,72 @@ def update_task(tasks: List[dict], summary: str, title: str, From: str, db, work
                     "confidence": work_package_data.get("confidence", 0.0),
                     "reasoning": work_package_data.get("reasoning", "")
                 }
-                logger.info(f"Added work package impact data to task: {work_package_data.get('impact_level', 'low')} impact")
+                logger.info(
+                    f"Added work package impact data to task: "
+                    f"{work_package_data.get('impact_level', 'low')} impact"
+                )
 
-            # If task is completed or closed, mark completed_at
-            if status.upper() in ["COMPLETED", "CLOSED"]:
+            # --- Handle completed/closed tasks ---
+            if status and status.upper() in ["COMPLETED", "CLOSED"]:
                 update_fields["completed_at"] = datetime.datetime.utcnow()
 
-            # Try different query formats
-            filter_queries = [
-                {"_id": ObjectId(task_id)},
-                {"task_id": task_id},
-                {"task_number": task_id}
-            ]
-            
-            if not ObjectId.is_valid(task_id):
-                # If it's not a valid ObjectId, try it as a direct string
-                filter_queries.insert(1, {"_id": task_id})
-            
-            updated = False
-            last_error = None
-            
-            for query in filter_queries:
-                try:
-                    # Log the query being attempted
-                    logger.info(f"Attempting query: {query}")
-                    
-                    # First check if the document exists
-                    existing = task_collection.find_one(query, {"_id": 1})
-                    if existing:
-                        logger.info(f"Found task with query {query}: {existing}")
-                        result = task_collection.update_one(query, {"$set": update_fields})
-                        if result.modified_count > 0:
-                            results.append(f"Task {task_id} updated successfully using query {query}")
-                            updated = True
-                            break
-                        else:
-                            last_error = f"Task {task_id} found but not updated (no changes?)"
-                            logger.warning(last_error)
-                    else:
-                        last_error = f"Task {task_id} not found with query {query}"
-                        logger.warning(last_error)
-                except Exception as e:
-                    last_error = f"Error querying with {query}: {str(e)}"
-                    logger.error(last_error, exc_info=True)
-            
-            if not updated:
-                results.append(f"Failed to update task {task_id}. Last error: {last_error}")
-                # Log the first few documents in the collection for debugging
-                try:
-                    sample_docs = list(task_collection.find({}, {"_id": 1, "task_id": 1, "task_number": 1}).limit(5))
-                    logger.info(f"Sample documents in {DATABASE_CONFIG['iwp_db']}: {sample_docs}")
-                except Exception as e:
-                    logger.error(f"Error sampling collection: {str(e)}")
+            # --- Build filter query ---
+            filter_query = {"_id": ObjectId(task_id)} if ObjectId.is_valid(task_id) else {"_id": task_id}
 
-            # Log into communications for audit
-            comms_doc = {
-            "_id": ObjectId(),
-            "type": "update",
-            "message": summary,
-            "title": title,
-            "status": "open", 
-            "source": "whatsapp",
-            "action_taken": "decision", 
-            "From": From,
-            "created_at": datetime.datetime.utcnow(),
-            "updated_at": datetime.datetime.utcnow(),
-            "acknowledged_at": datetime.datetime.utcnow(),
-            "project_id": DATABASE_CONFIG["project_id"],
-            }
-            
-            # Add work package information to communication log
-            if work_package_data:
-                comms_doc["work_package_impact"] = {
-                    "affected_cwps": work_package_data.get("affected_cwps", []),
-                    "affected_iwps": work_package_data.get("affected_iwps", []),
-                    "primary_cwp": work_package_data.get("primary_cwp"),
-                    "primary_iwp": work_package_data.get("primary_iwp"),
-                    "impact_level": work_package_data.get("impact_level", "low"),
-                    "confidence": work_package_data.get("confidence", 0.0),
-                    "reasoning": work_package_data.get("reasoning", "")
+            # --- Debug: Check task existence ---
+            existing_task = task_collection.find_one(filter_query)
+            if not existing_task:
+                logger.warning(f"Task {task_id} not found in database with filter {filter_query}")
+                results.append(f"Task {task_id} not found in database")
+                continue
+            else:
+                logger.debug(
+                    f"Found existing task: {existing_task.get('_id')} "
+                    f"(current audit_log length: {len(existing_task.get('audit_log', []))})"
+                )
+
+            # --- Update task + push audit log ---
+            logger.debug(f"Attempting to update task with filter: {filter_query}")
+            logger.debug(f"Audit entry to push: {audit_entry}")
+
+            result = task_collection.update_one(
+                filter_query,
+                {
+                    "$set": update_fields,
+                    "$push": {"audit_log": audit_entry}
                 }
-            
-            comms_collection.insert_one(comms_doc)
+            )
 
+            if result.modified_count > 0:
+                results.append(f"Task {task_id} updated successfully.")
+                logger.info(f"Task {task_id} updated successfully.")
+            else:
+                results.append(f"Task {task_id} found but not modified.")
+                logger.warning(f"Task {task_id} found but no changes applied.")
+
+            # --- Log into communications for audit ---
+            comms_doc = {
+                "_id": ObjectId(),
+                "type": "update",
+                "message": summary,
+                "title": title,
+                "status": "open",
+                "source": "whatsapp",
+                "action_taken": "decision",
+                "From": From,
+                "created_at": datetime.datetime.utcnow(),
+                "updated_at": datetime.datetime.utcnow(),
+                "acknowledged_at": datetime.datetime.utcnow(),
+                "project_id": DATABASE_CONFIG["project_id"],
+            }
+
+            if work_package_data:
+                comms_doc["work_package_impact"] = update_fields["work_package_impact"]
+
+            comms_collection.insert_one(comms_doc)
+            logger.info(f"Communication log created for task {task_id} → comms_id: {comms_doc['_id']}")
+
+            # --- Insert Notification ---
             notification = {
                 "title": title,
                 "description": summary,
@@ -395,30 +381,39 @@ def update_task(tasks: List[dict], summary: str, title: str, From: str, db, work
                 "type": "update",
                 "project_id": DATABASE_CONFIG["project_id"],
             }
-            
-            notif_result = db[DATABASE_CONFIG["notifications_db"]].insert_one(notification)
+
+            notif_result = notif_collection.insert_one(notification)
+            logger.info(f"Notification inserted: {notif_result.inserted_id}")
+
+            # --- Publish to Redis ---
             r = get_redis_connection()
             try:
-                r.publish("notifications", json.dumps({
-                    "_id": str(notif_result.inserted_id),
-                    "title": notification["title"],
-                    "description": notification["description"],
-                    "type": "update",
-                    "comms_id": str(comms_doc["_id"]),
-                    "seen": "unread",
-                    "project_id": str(get_project_id()),
-                }))
+                r.publish(
+                    "notifications",
+                    json.dumps({
+                        "_id": str(notif_result.inserted_id),
+                        "title": title,
+                        "description": summary,
+                        "type": "update",
+                        "comms_id": str(comms_doc["_id"]),
+                        "seen": "unread",
+                        "project_id": str(get_project_id()),
+                    })
+                )
+                logger.info(f"Redis notification published for {notif_result.inserted_id}")
             finally:
                 r.close()
+
         except Exception as e:
             error_msg = f"Failed to update task {task_id}: {e}"
-            logger.error(error_msg)
+            logger.error(error_msg, exc_info=True)
             results.append(error_msg)
 
+    # --- Summary log ---
     success_count = len([r for r in results if "successfully" in r])
     total_count = len(tasks)
-
     logger.info(f"Batch task update completed: {success_count}/{total_count} tasks updated successfully.")
+
     if success_count != total_count:
         logger.warning(f"Failed to update {total_count - success_count} tasks.")
     logger.debug(f"Details: {'; '.join(results)}")

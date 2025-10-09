@@ -80,11 +80,11 @@ func loadConfig() *Config {
 		"?retryWrites=true&w=majority&appName=alfreddemo"
 
 	config := &Config{
-		ProjectID:       getEnv("PROJECT_ID", "68e4b1b85756ad0c5eca40dd"),
+		ProjectID:       getEnv("PROJECT_ID", "68e3a2b7a37dbef59217aee0"),
 		MongoURI:        mongoURI,
 		MongoDatabase:   database,
 		MongoCollection: getEnv("MONGO_COLLECTION", "whatsapp_event_log"),
-		PythonEndpoint:  getEnv("PYTHON_ENDPOINT", "http://localhost:8001/process-whatsapp-messages"),
+		PythonEndpoint:  getEnv("PYTHON_ENDPOINT", "http://localhost:8000/process-whatsapp-messages"),
 		TargetGroupName: getEnv("TARGET_GROUP_NAME", "Mana inti sandesam🏘️"),
 		HTTPServerPort:  getEnv("HTTP_SERVER_PORT", "8081"),
 	}

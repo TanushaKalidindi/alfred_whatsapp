@@ -292,19 +292,19 @@ def get_task_context_for_llm(db, site_ids, site_names):
         if site_id and site_id != "null" and ObjectId.is_valid(site_id):
             try:
                 # Debug: Check total tasks in collection
-                total_tasks = db[DATABASE_CONFIG["iwp_db"]].count_documents({})
-                logger.debug(f"Total tasks in {DATABASE_CONFIG['iwp_db']}: {total_tasks}")
+                total_tasks = db[DATABASE_CONFIG["task_db"]].count_documents({})
+                logger.debug(f"Total tasks in {DATABASE_CONFIG['task_db']}: {total_tasks}")
                 
                 # Debug: Check tasks for this specific site
                 site_oid = ObjectId(site_id)
-                site_task_count = db[DATABASE_CONFIG["iwp_db"]].count_documents({"site_id": site_oid})
+                site_task_count = db[DATABASE_CONFIG["task_db"]].count_documents({"site_id": site_oid})
                 logger.debug(f"Tasks for site {site_id}: {site_task_count}")
                 
                 # Also try string site_id in case it's stored as string
-                site_task_count_str = db[DATABASE_CONFIG["iwp_db"]].count_documents({"site_id": site_id})
+                site_task_count_str = db[DATABASE_CONFIG["task_db"]].count_documents({"site_id": site_id})
                 logger.debug(f"Tasks for site {site_id} (as string): {site_task_count_str}")
                 
-                task_docs = db[DATABASE_CONFIG["iwp_db"]].find(
+                task_docs = db[DATABASE_CONFIG["task_db"]].find(
                     {"site_id": ObjectId(site_id)},
                     {"title": 1, "status": 1, "end_date": 1} 
                 )
