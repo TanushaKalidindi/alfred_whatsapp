@@ -9,7 +9,14 @@ from .config import DATABASE_CONFIG, get_project_id
 from .config import get_redis_connection
 
 import json
+import redis
+from redis import Redis
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+
+project_id = get_project_id()
 
 def add_risk(risks: List[Dict], summary: str, title: str, From: str, db, work_package_data: Dict = None) -> str:
     """Add multiple risks to the database with work package information."""
@@ -22,14 +29,14 @@ def add_risk(risks: List[Dict], summary: str, title: str, From: str, db, work_pa
         logger.debug(f"DEBUG - site_id value: {risks[0].get('site_id')}")
 
     results = []
-    
+
     for i, risk_data in enumerate(risks):
         site_id = risk_data.get("site_id", "")
         description = risk_data.get("description", "")
         severity = risk_data.get("severity", "medium")
         impact = risk_data.get("impact", "medium")
         mitigation_plan = risk_data.get("mitigation_plan", "")
-        reasoning = risk_data.get("reasoning", "medium")
+        reasoning = risk_data.get("reasoning", reasoning or "medium")
         package_id = risk_data.get("package_id")
             
         logger.info(f"Adding risk {i+1}/{len(risks)} for site_id: {site_id}")
@@ -57,7 +64,7 @@ def add_risk(risks: List[Dict], summary: str, title: str, From: str, db, work_pa
                 "updated_at": datetime.datetime.utcnow(),
                 "updated_by": ObjectId("68ac443d8f7fde8cc31cc0d9"),
                 "agent_update":True,
-                "project_id": get_project_id(),
+                "project_id": project_id,
             }
             if package_id:
                 entry["package_id"] = package_id
@@ -85,20 +92,26 @@ def add_risk(risks: List[Dict], summary: str, title: str, From: str, db, work_pa
                 "risk_id": str(entry["_id"]),
                 "type": "risk",
                 "seen": False,
-                "project_id": DATABASE_CONFIG["project_id"],
+                "project_id": project_id,
             }
             notifications_col.insert_one(notification)
 
-            r = get_redis_connection()
+            r = redis.Redis(
+                            host=os.getenv("REDIS_HOST"),
+                            port=int(os.getenv("REDIS_PORT")),
+                            username=os.getenv("REDIS_USERNAME"),
+                            password=os.getenv("REDIS_PASSWORD"),
+                            decode_responses=True
+                        ) 
             try:
-                r.publish("notifications", json.dumps({
+                r.publish(f"notifications:{project_id}", json.dumps({
                     "_id": str(notification["_id"]),
                     "title": notification["title"],
                     "description": notification["description"],
                     "type": "risk",
                     "risk_id": str(entry["_id"]),
                     "seen": "unread",
-                    "project_id": str(get_project_id()),
+                    "project_id": project_id,
                 }))
             finally:
                 r.close()
@@ -205,7 +218,13 @@ def update_task_with_conflict(conflict: Any, db: Any) -> bool:
                 notification_result = notifications_coll.insert_one(notification_doc)
 
                 try:
-                    r = get_redis_connection()
+                    r = redis.Redis(
+                            host=os.getenv("REDIS_HOST"),
+                            port=int(os.getenv("REDIS_PORT")),
+                            username=os.getenv("REDIS_USERNAME"),
+                            password=os.getenv("REDIS_PASSWORD"),
+                            decode_responses=True
+                        ) 
                     payload = {
                         "_id": str(notification_result.inserted_id),
                         "title": "Conflict detected on Task",
@@ -214,17 +233,17 @@ def update_task_with_conflict(conflict: Any, db: Any) -> bool:
                         "task_id": notification_doc["task_id"],
                         "seen": False,
                         "type": "data_conflict",
-                        "project_id": str(project_id),
+                        "project_id": project_id,
                     }
-                    r.publish("notifications", json.dumps(payload))
+                    r.publish(f"notifications:{project_id}", json.dumps(payload))
                 except Exception as pub_e:
                     logger.warning(f"Redis publish failed: {pub_e}")
 
             except Exception as inner_e:
                 logger.error(f"Error creating comms/notification for conflict: {inner_e}")
-            return False
+                # Continue to append event log even if comms/notification fails
 
-        # Append event for non-conflict
+        # Append event log for both conflict and non-conflict cases
         existing_log = doc.get("data_conflict_details", {}).get("event_log", [])
         if isinstance(existing_log, dict):
             existing_log = [existing_log]
@@ -250,7 +269,7 @@ def update_task_with_conflict(conflict: Any, db: Any) -> bool:
         logger.error(f"Error updating Task for conflict details: {e}")
         return False
 
-def update_task(tasks: List[dict], summary: str, title: str, From: str, db, work_package_data, reasoning: Dict = None) -> str:
+def update_task(tasks: List[dict], summary: str, title: str, From: str, db, work_package_data) -> str:
     """
     Update multiple tasks in the database with work package information.
     Also logs into communications collection for audit.
@@ -262,7 +281,6 @@ def update_task(tasks: List[dict], summary: str, title: str, From: str, db, work
         From: Sender's email
         db: Database connection
         work_package_data: Dictionary containing work package information
-        reasoning: Explanation for the task update
     """
     logger.info(f"Executing action: update_task for {len(tasks)} tasks. Summary: {summary}")
     results = []
@@ -386,10 +404,16 @@ def update_task(tasks: List[dict], summary: str, title: str, From: str, db, work
             logger.info(f"Notification inserted: {notif_result.inserted_id}")
 
             # --- Publish to Redis ---
-            r = get_redis_connection()
+            r = redis.Redis(
+                            host=os.getenv("REDIS_HOST"),
+                            port=int(os.getenv("REDIS_PORT")),
+                            username=os.getenv("REDIS_USERNAME"),
+                            password=os.getenv("REDIS_PASSWORD"),
+                            decode_responses=True
+                        ) 
             try:
                 r.publish(
-                    "notifications",
+                    f"notifications:{project_id}",
                     json.dumps({
                         "_id": str(notif_result.inserted_id),
                         "title": title,
@@ -397,7 +421,7 @@ def update_task(tasks: List[dict], summary: str, title: str, From: str, db, work
                         "type": "update",
                         "comms_id": str(comms_doc["_id"]),
                         "seen": "unread",
-                        "project_id": str(get_project_id()),
+                        "project_id": project_id,
                     })
                 )
                 logger.info(f"Redis notification published for {notif_result.inserted_id}")
@@ -544,11 +568,17 @@ def update_risk(risks: List[dict], summary: str, title: str, From: str, db, work
             }
 
             notif_result = db[DATABASE_CONFIG["notifications_db"]].insert_one(notification)
-            r = get_redis_connection()
+            r = redis.Redis(
+                            host=os.getenv("REDIS_HOST"),
+                            port=int(os.getenv("REDIS_PORT")),
+                            username=os.getenv("REDIS_USERNAME"),
+                            password=os.getenv("REDIS_PASSWORD"),
+                            decode_responses=True
+                        ) 
 
             try:
                 
-                r.publish("notifications", json.dumps({
+                r.publish(f"notifications:{project_id}", json.dumps({
                     "_id": str(notif_result.inserted_id),
                     "title": notification["title"],
                     "description": notification["description"],
@@ -556,7 +586,7 @@ def update_risk(risks: List[dict], summary: str, title: str, From: str, db, work
                     "comms_id": str(comms_doc["_id"]),
                     "risk_id": str(risk_id),
                     "seen": "unread",
-                    "project_id": str(DATABASE_CONFIG["project_id"]),
+                    "project_id": project_id,
                 }))
             finally:
                 r.close()
@@ -650,16 +680,22 @@ def update_response_in_db(
             
             notification_result = db[DATABASE_CONFIG["notifications_db"]].insert_one(notification)
 
-            r = get_redis_connection()
+            r = redis.Redis(
+                            host=os.getenv("REDIS_HOST"),
+                            port=int(os.getenv("REDIS_PORT")),
+                            username=os.getenv("REDIS_USERNAME"),
+                            password=os.getenv("REDIS_PASSWORD"),
+                            decode_responses=True
+                        ) 
             try:
-                r.publish("notifications", json.dumps({
+                r.publish(f"notifications:{project_id}", json.dumps({
                     "_id": str(notification_result.inserted_id),
                     "title": notification["title"],
                     "description": notification["description"],
                     "comms_id": str(update_doc["_id"]),
                     "seen": "unread",
                     "type": type,
-                    "project_id": str(get_project_id()),
+                    "project_id": project_id,
                 }))
             finally:
                 r.close()
@@ -746,9 +782,15 @@ def create_communication_log(
         
         notification_result = db[DATABASE_CONFIG["notifications_db"]].insert_one(notification)
 
-        r = get_redis_connection()
+        r = redis.Redis(
+                            host=os.getenv("REDIS_HOST"),
+                            port=int(os.getenv("REDIS_PORT")),
+                            username=os.getenv("REDIS_USERNAME"),
+                            password=os.getenv("REDIS_PASSWORD"),
+                            decode_responses=True
+                        ) 
         try:
-            r.publish("notifications", json.dumps({
+            r.publish(f"notifications:{project_id}", json.dumps({
                 "_id": str(notification_result.inserted_id),
                 "title": notification["title"],
             "description": notification["description"],

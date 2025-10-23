@@ -205,9 +205,21 @@ def task_detection_and_conflict_node(state: Dict[str, Any], config: Dict[str, An
         state["task_detection_result"] = detection_result
 
         # Step 3: Conflict analysis for detected tasks
-        # Skip conflict analysis to avoid async issues for now
-        logger.info("Skipping conflict analysis to avoid async issues")
-        conflict_results = []
+        # Run async helper synchronously
+        def _run(coro):
+            import concurrent.futures, asyncio as _asyncio
+            with concurrent.futures.ThreadPoolExecutor(max_workers=1) as ex:
+                fut = ex.submit(_asyncio.run, coro)
+                return fut.result()
+
+        conflict_results = _run(
+            process_conflict_analysis_for_tasks(
+                detection_result,
+                email_content_str,
+                db,
+                llm,
+            )
+        )
         state["task_conflict_analysis_results"] = conflict_results
 
         logger.info("✅ Task Detection & Conflict Analysis Node Complete!")
@@ -685,12 +697,7 @@ def parameter_extraction_node(state: Dict[str, Any], config: Dict[str, Any]) -> 
         
         logger.info(f"Processing {len(actions)} actions: {actions}")
         
-        # Deduplicate actions to prevent infinite loops
-        unique_actions = list(set(actions))
-        if len(unique_actions) != len(actions):
-            logger.info(f"Deduplicated {len(actions)} actions to {len(unique_actions)} unique actions: {unique_actions}")
-        
-        for action in unique_actions:
+        for action in actions:
             try:
                 normalized_action = action.lower().replace(" ", "_")
                 logger.info(f"Processing action: {action} -> {normalized_action}")
@@ -1058,6 +1065,7 @@ def action_execution_node(state: Dict[str, Any], config: Dict[str, Any]) -> Dict
                             "task_id": task.task_id,
                             "status": task.status,
                             "notes": task.notes,
+                            "reasoning": task.reasoning,
                             "completion_percentage": task.completion_percentage,
                         })
                     

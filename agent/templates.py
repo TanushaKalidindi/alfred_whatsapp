@@ -10,6 +10,7 @@ You are an intelligent agent for infrastructure project management via WhatsApp.
 
 ### Available sites: {sites}
 
+
 ### INSTRUCTIONS:
 
 1. MESSAGE RELEVANCE:
@@ -102,7 +103,12 @@ Extract the following for each risk:
 
 # Task update template
 task_prompt_template = """
-Based on the following WhatsApp conversation, extract task updates:
+Based on the following WhatsApp conversation, extract task updates. Pay special attention to the status field:
+
+Status should be one of:
+- 'in_progress': Work has started but not completed (e.g., 'started working on', 'in progress', 'working on')
+- 'completed': Task is fully done (e.g., 'completed', 'finished', 'done', 'finalized')
+- 'open': Only use if the message explicitly states the task is open or no clear status can be determined
 
 WhatsApp Messages: {new_messages}
 Available Tasks: {available_tasks}
@@ -111,9 +117,9 @@ From: {From}
 
 Extract the following for each task update:
 - task_id: ID of task to update
-- status: new status for the task
+- status: new status for the task (based on the status guidelines above)
 - notes: any additional notes
-- completion_percentage: if mentioned
+- completion_percentage: if mentioned (0-100)
 
 {format_instructions}
 """

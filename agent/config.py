@@ -12,8 +12,8 @@ load_dotenv()
 DATABASE_CONFIG = {
     "username": os.getenv("MONGODB_USERNAME", "alfreddeveloper_db_user"),
     "password": os.getenv("MONGODB_PASSWORD", "sBqjBA-n.5NX-qb"),
-    "cluster": os.getenv("MONGODB_CLUSTER", "alfreddemo.dcqqgb8.mongodb.net"),
-    "database": os.getenv("MONGODB_DATABASE", "alfreddemo"),
+    "cluster": os.getenv("MONGODB_CLUSTER", "purelight.dcqqgb8.mongodb.net"),
+    "database": os.getenv("MONGODB_DATABASE", "purelight"),
     "communications_db": os.getenv("COMMUNICATIONS_DB", "alfred_communications"),
     "risk_db": os.getenv("RISK_DB", "alfred_risks"),
     "task_db": os.getenv("TASK_DB", "alfred_tasks") ,
@@ -31,7 +31,7 @@ def get_database_uri() -> str:
     """Construct MongoDB Atlas connection URI."""
     return (
         f"mongodb+srv://{DATABASE_CONFIG['username']}:{DATABASE_CONFIG['password']}"
-        f"@{DATABASE_CONFIG['cluster']}/{DATABASE_CONFIG['database']}?retryWrites=true&w=majority&appName=alfreddemo"
+        f"@{DATABASE_CONFIG['cluster']}/{DATABASE_CONFIG['database']}?retryWrites=true&w=majority&appName=purelight"
     )
 
 # Qdrant Configuration

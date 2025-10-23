@@ -186,10 +186,11 @@ class AddRiskInput(BaseModel):
     reasoning: str = Field(...)
 
 class Task(BaseModel):
-    task_id: str = Field(...)
-    status: str = Field(...)
-    notes: Optional[str] = Field(default=None)
-    completion_percentage: Optional[int] = Field(default=None)
+    task_id: str = Field(..., description="The ID of the task to update")
+    status: str = Field(..., description="New status for the task")
+    notes: Optional[str] = Field(default=None, description="Additional notes about the task update")
+    completion_percentage: Optional[int] = Field(default=None, description="Completion percentage (0-100)")
+    reasoning: Optional[str] = Field(default=None, description="Reasoning behind the task update")
 
 class UpdateTaskInput(BaseModel):
     tasks: List[Task] = Field(...)
@@ -261,7 +262,7 @@ class TaskStatus(str, Enum):
     
     Attributes:
         OPEN: The task has been created but work has not started
-        IN_PROGRESS: Work on the task is currently in progress
+        IN_PROGRESS: Work on the task is currently in_progress
         COMPLETED: The task has been successfully completed
     """
     OPEN = "open"

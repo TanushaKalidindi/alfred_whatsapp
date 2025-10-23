@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"io"
 	"os/signal"
 	"sync"
 	"syscall"
@@ -72,21 +73,21 @@ func loadConfig() *Config {
 	// Build MongoDB Atlas URI just like your Python get_database_uri()
 	username := getEnv("MONGODB_USERNAME", "alfreddeveloper_db_user")
 	password := getEnv("MONGODB_PASSWORD", "sBqjBA-n.5NX-qb")
-	cluster := getEnv("MONGODB_CLUSTER", "alfreddemo.dcqqgb8.mongodb.net")
-	database := getEnv("MONGODB_DATABASE", "alfreddemo")
+	cluster := getEnv("MONGODB_CLUSTER", "purelight.dcqqgb8.mongodb.net")
+	database := getEnv("MONGODB_DATABASE", "purelight")
 
 	mongoURI := "mongodb+srv://" + username + ":" + password +
 		"@" + cluster + "/" + database +
-		"?retryWrites=true&w=majority&appName=alfreddemo"
+		"?retryWrites=true&w=majority&appName=purelight"
 
 	config := &Config{
-		ProjectID:       getEnv("PROJECT_ID", "68e3a2b7a37dbef59217aee0"),
+		ProjectID:       getEnv("PROJECT_ID", "68efc334812a42e801da5d90"),
 		MongoURI:        mongoURI,
 		MongoDatabase:   database,
 		MongoCollection: getEnv("MONGO_COLLECTION", "whatsapp_event_log"),
-		PythonEndpoint:  getEnv("PYTHON_ENDPOINT", "http://localhost:8000/process-whatsapp-messages"),
-		TargetGroupName: getEnv("TARGET_GROUP_NAME", "Mana inti sandesam🏘️"),
-		HTTPServerPort:  getEnv("HTTP_SERVER_PORT", "8081"),
+		PythonEndpoint:  getEnv("PYTHON_ENDPOINT", "http://localhost:8003/process-whatsapp-messages"),
+		TargetGroupName: getEnv("TARGET_GROUP_NAME", "Agent"),
+		HTTPServerPort:  getEnv("HTTP_SERVER_PORT", "8082"),
 	}
 
 	// Parse batch interval (in minutes)
@@ -376,82 +377,134 @@ func (wa *WhatsAppAgent) handleNewMessage(evt *events.Message) {
 }
 
 func (wa *WhatsAppAgent) prepareBatch() []map[string]interface{} {
-	batch := []map[string]interface{}{}
+    batch := []map[string]interface{}{}
 
-	for chatID, msgs := range wa.messages {
-		if len(msgs) == 0 {
-			continue
-		}
+    for chatID, msgs := range wa.messages {
+        if len(msgs) == 0 {
+            continue
+        }
 
-		// Filter for configured target group only
-		if len(msgs) > 0 && (msgs[0].ChatName != wa.config.TargetGroupName || msgs[0].ChatType != "group") {
-			continue
-		}
+        // Filter for target group only
+        if len(msgs) > 0 && (msgs[0].ChatName != wa.config.TargetGroupName || msgs[0].ChatType != "group") {
+            continue
+        }
 
-		// Get how many messages we've already processed for this chat
-		processedCount := wa.processed[chatID]
+        processedCount := wa.processed[chatID]
 
-		// Get unprocessed messages (new messages)
-		if processedCount >= len(msgs) {
-			continue // No new messages
-		}
+        // Skip if no new messages
+        if processedCount >= len(msgs) {
+            continue
+        }
 
-		unprocessedMsgs := msgs[processedCount:]
-		if len(unprocessedMsgs) == 0 {
-			continue
-		}
+        unprocessedMsgs := msgs[processedCount:]
+        if len(unprocessedMsgs) == 0 {
+            continue
+        }
 
-		// Get context: 10 messages before the first unprocessed message
+        // Get up to 10 previous messages as context
+        // Get up to 10 previous messages as context (better handling for first batch)
 		contextMsgs := []UnreadMessage{}
-		contextStart := processedCount - 10
-		if contextStart < 0 {
-			contextStart = 0
-		}
-		if processedCount > 0 {
-			contextMsgs = msgs[contextStart:processedCount]
+
+		if len(msgs) > 0 {
+			end := processedCount
+			if end == 0 {
+				// On first batch, use all messages except the newest ones
+				end = len(msgs) - len(unprocessedMsgs)
+				if end < 0 {
+					end = 0
+				}
+			}
+
+			contextStart := end - 10
+			if contextStart < 0 {
+				contextStart = 0
+			}
+
+			if end > contextStart {
+				contextMsgs = msgs[contextStart:end]
+			}
 		}
 
-		// Create a single batch entry with all unprocessed messages and context
-		if len(unprocessedMsgs) > 0 {
-			batch = append(batch, map[string]interface{}{
-				"chat_id":   chatID,
-				"chat_name": unprocessedMsgs[0].ChatName,
-				"chat_type": unprocessedMsgs[0].ChatType,
-				"context":   append(contextMsgs, unprocessedMsgs...),
-				"timestamp": unprocessedMsgs[len(unprocessedMsgs)-1].Timestamp,
-			})
-		}
 
-		// Update processed count
-		wa.processed[chatID] = len(msgs)
-	}
+        // Convert messages to the format expected by the Python endpoint
+        contextMessages := []map[string]interface{}{}  // Initialize as empty slice
+        for _, msg := range contextMsgs {
+            contextMessages = append(contextMessages, map[string]interface{}{
+                "from":       msg.From,
+                "to":         msg.To,
+                "chat_name":  msg.ChatName,
+                "chat_type":  msg.ChatType,
+                "message_id": msg.JID,
+                "timestamp":  msg.Timestamp.Format(time.RFC3339),
+                "message":    msg.Message,
+            })
+        }
 
-	return batch
+        var newMessages []map[string]interface{}
+        for _, msg := range unprocessedMsgs {
+            newMessages = append(newMessages, map[string]interface{}{
+                "from":       msg.From,
+                "to":         msg.To,
+                "chat_name":  msg.ChatName,
+                "chat_type":  msg.ChatType,
+                "message_id": msg.JID,
+                "timestamp":  msg.Timestamp.Format(time.RFC3339),
+                "message":    msg.Message,
+            })
+        }
+
+        // Add the batch with properly formatted messages
+        batch = append(batch, map[string]interface{}{
+            "chat_id":         chatID,
+            "chat_name":       unprocessedMsgs[0].ChatName,
+            "chat_type":       unprocessedMsgs[0].ChatType,
+            "context_messages": contextMessages,
+            "new_messages":    newMessages,
+            "timestamp":       unprocessedMsgs[len(unprocessedMsgs)-1].Timestamp.Format(time.RFC3339),
+        })
+
+        // Update processed count
+        wa.processed[chatID] = len(msgs)
+    }
+
+    return batch
 }
 
 func (wa *WhatsAppAgent) sendBatchToPython() int {
-	wa.mutex.Lock()
-	batch := wa.prepareBatch()
-	wa.mutex.Unlock()
+    wa.mutex.Lock()
+    batch := wa.prepareBatch()
+    wa.mutex.Unlock()
 
-	if len(batch) == 0 {
-		fmt.Println("ℹ️ No new messages to send")
-		return 0
-	}
+    if len(batch) == 0 {
+        fmt.Println("ℹ️ No new messages to send")
+        return 0
+    }
 
-	payload, _ := json.Marshal(map[string]interface{}{
-		"messages": batch,
-	})
+    // Log the payload for debugging
+    payload, err := json.Marshal(map[string]interface{}{
+        "messages": batch,
+    })
+    if err != nil {
+        fmt.Printf("❌ Failed to marshal batch: %v\n", err)
+        return 0
+    }
 
-	resp, err := http.Post(wa.config.PythonEndpoint, "application/json", bytes.NewBuffer(payload))
-	if err != nil {
-		fmt.Printf("❌ Failed to send batch: %v\n", err)
-		return 0
-	}
-	defer resp.Body.Close()
-	fmt.Printf("✅ Sent batch to Python, status: %s\n", resp.Status)
+    fmt.Printf("📤 Sending batch to Python endpoint (%d bytes)\n", len(payload))
+    resp, err := http.Post(wa.config.PythonEndpoint, "application/json", bytes.NewBuffer(payload))
+    if err != nil {
+        fmt.Printf("❌ Failed to send batch: %v\n", err)
+        return 0
+    }
+    defer resp.Body.Close()
 
-	return len(batch)
+    body, _ := io.ReadAll(resp.Body)
+    if resp.StatusCode != http.StatusOK {
+        fmt.Printf("❌ Error from Python endpoint (%d): %s\n", resp.StatusCode, string(body))
+        return 0
+    }
+
+    fmt.Printf("✅ Successfully sent batch (%d messages)\n", len(batch))
+    return len(batch)
 }
 
 func (wa *WhatsAppAgent) addMessage(msg UnreadMessage) {
