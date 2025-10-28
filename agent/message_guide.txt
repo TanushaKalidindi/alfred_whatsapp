@@ -1,0 +1,31 @@
+📱 *HOW TO MESSAGE THE AGENT* 📱
+
+1️⃣ *ALWAYS START* with one of these keywords:
+   • `TASK` - For work updates
+   • `ISSUE` - For problems/risks
+   • `UPDATE` - For general info
+   • `HELP` - For assistance
+
+2️⃣ *ALWAYS INCLUDE*:
+   • Site name (e.g., "Site A")
+   • Clear description
+   • Status (if applicable)
+
+📝 *EXAMPLES*:
+
+*TASK: Site A - Foundation Work*
+• Status: In Progress (75%)
+• Details: Completed rebar installation
+• Blockers: Need cement delivery
+
+*ISSUE: Site B - Electrical Problem*
+• Severity: High
+• Details: Power outage in Block 2
+• Action: Need electrician
+
+*UPDATE: Site C - Safety*
+• Subject: New safety rules
+• Details: Hard hats required
+• Effective: Immediately
+
+❓ Need help? Just type: HELP

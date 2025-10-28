@@ -81,12 +81,12 @@ func loadConfig() *Config {
 		"?retryWrites=true&w=majority&appName=purelight"
 
 	config := &Config{
-		ProjectID:       getEnv("PROJECT_ID", "68efc334812a42e801da5d90"),
+		ProjectID:       getEnv("PROJECT_ID", "68fa0c2d27a9893d3fc91c1b"),
 		MongoURI:        mongoURI,
 		MongoDatabase:   database,
 		MongoCollection: getEnv("MONGO_COLLECTION", "whatsapp_event_log"),
 		PythonEndpoint:  getEnv("PYTHON_ENDPOINT", "http://localhost:8003/process-whatsapp-messages"),
-		TargetGroupName: getEnv("TARGET_GROUP_NAME", "Agent"),
+		TargetGroupName: getEnv("TARGET_GROUP_NAME", "WG 142MW MH ParaBond"),
 		HTTPServerPort:  getEnv("HTTP_SERVER_PORT", "8082"),
 	}
 
